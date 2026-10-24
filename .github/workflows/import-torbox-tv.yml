@@ -1,0 +1,34 @@
+name: Import latest signed TorBox TV APK
+on:
+  push:
+    paths:
+      - '.github/workflows/import-torbox-tv.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch signed, previously verified TorBox TV 0.2.4
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 --output TorBox-TV-0.2.4-test.apk \
+            https://raw.githubusercontent.com/to-shreds/torbox-web-player/native-updates/native/updates/releases/TorBox-TV-0.2.4-test.apk
+          test "$(stat -c%s TorBox-TV-0.2.4-test.apk)" = 11590823
+          echo "c49d0de7577b7e0097fdf2b111e14b8523da064fe181b3b7e882d88610e24a7b  TorBox-TV-0.2.4-test.apk" | sha256sum -c -
+      - name: Publish verified APK to repository root
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add TorBox-TV-0.2.4-test.apk
+          if ! git diff --cached --quiet; then
+            git commit -m "Add original-signed TorBox TV 0.2.4 APK"
+            git push
+          fi
