@@ -1,0 +1,63 @@
+name: Package TorBox TV 0.2.5 separate test APK
+on:
+  push:
+    paths:
+      - '.github/workflows/build-torbox-tv-025.yml'
+      - '.build/TorBox-TV-0.2.5-candidate-source.zip'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.13'
+      - name: Extract tested 0.2.5 candidate and retain source boundary
+        run: |
+          set -euo pipefail
+          mkdir -p native
+          unzip -q .build/TorBox-TV-0.2.5-candidate-source.zip -d native
+          cd native/torbox-tv
+          python3 scripts/check_boundaries.py
+      - name: Build side-by-side test app, preserving existing TorBox TV installation
+        working-directory: native/torbox-tv
+        run: |
+          set -euo pipefail
+          sdkmanager 'platforms;android-36' 'build-tools;35.0.0'
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/build.gradle.kts')
+          s=p.read_text()
+          old='applicationId = "app.torboxtv"'
+          new='applicationId = "app.torboxtv.buffstreams"'
+          if s.count(old)!=1:
+              raise SystemExit('Unexpected applicationId definition, refusing build')
+          p.write_text(s.replace(old,new))
+          print('Side-by-side package app.torboxtv.buffstreams; existing app.torboxtv untouched')
+          PY
+          gradle --no-daemon --console=plain --no-build-cache -Pkotlin.incremental=false testDebugUnitTest assembleDebug
+      - name: Verify APK and publish
+        run: |
+          set -euo pipefail
+          input=native/torbox-tv/app/build/outputs/apk/debug/app-debug.apk
+          test -s "$input"
+          /usr/local/lib/android/sdk/build-tools/35.0.0/aapt dump badging "$input" | tee /tmp/badging.txt
+          grep -q "package: name='app.torboxtv.buffstreams'" /tmp/badging.txt
+          cp "$input" TorBox-TV-0.2.5-test-separate.apk
+          sha256sum TorBox-TV-0.2.5-test-separate.apk | tee TorBox-TV-0.2.5-test-separate.apk.sha256
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add TorBox-TV-0.2.5-test-separate.apk TorBox-TV-0.2.5-test-separate.apk.sha256
+          git diff --cached --quiet || { git commit -m "Publish verified TorBox TV 0.2.5 side-by-side test APK"; git push; }
