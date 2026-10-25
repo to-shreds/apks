@@ -6,7 +6,7 @@
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
     <application android:name=".ui.TorBoxApplication" android:allowBackup="false" android:usesCleartextTraffic="false"
-        android:label="TorBox TV" android:icon="@drawable/tv_icon"
+        android:label="TorBox TV Stable" android:icon="@drawable/tv_icon"
         android:banner="@drawable/tv_banner" android:theme="@style/AppTheme"
         android:supportsRtl="true">
         <provider android:name=".data.UpdateFileProvider" android:authorities="${applicationId}.updates"
