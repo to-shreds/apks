@@ -1,0 +1,85 @@
+name: Publish verified signed TorBox TV 0.2.7
+on:
+  push:
+    branches: [release/torbox-tv-vault-027-staging]
+    paths: ['transport/torbox-tv-027/**', '.github/workflows/torbox-tv-vault-027-publish.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: torbox-tv-027-publication
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - name: Rebuild exact signed APK from checksum-verified transport pieces
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64,hashlib,pathlib,zipfile
+          pieces=sorted(pathlib.Path('transport/torbox-tv-027/chunks').glob('part-*.txt'))
+          assert len(pieces)==20 and [p.name for p in pieces]==[f'part-{i:03d}.txt' for i in range(20)]
+          encoded=''.join(p.read_text() for p in pieces)
+          assert len(encoded)==7658036
+          raw=base64.b64decode(encoded,validate=True)
+          expected='11ebf803de97d8e625cd14ea222902f5b72b8c2546ce7843329fe33ff785a500'
+          assert len(raw)==5743525 and hashlib.sha256(raw).hexdigest()==expected
+          assert zipfile.is_zipfile(__import__('io').BytesIO(raw))
+          output=pathlib.Path('/tmp/TorBox-TV-0.2.7.apk')
+          output.write_bytes(raw)
+          print('PASS signed APK transport hash, length and ZIP structure; release is exactly',expected)
+          PY
+      - name: Verify Android application identity and backed-up signing certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          sdkmanager 'build-tools;35.0.0'
+          apk=/tmp/TorBox-TV-0.2.7.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs "$apk" | tee /tmp/torbox-cert.txt
+          grep -iq '143948886131206f40b2a1f42826fb548c143488fa91f1ce4cac7b65ff84b507' /tmp/torbox-cert.txt
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$apk" | tee /tmp/torbox-package.txt
+          grep -q "package: name='app.torboxtv.stable' versionCode='10' versionName='0.2.7'" /tmp/torbox-package.txt
+      - name: Publish verified APK and stable self-update manifest to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git switch --detach origin/main
+          cp /tmp/TorBox-TV-0.2.7.apk ./TorBox-TV-0.2.7.apk
+          sha256sum TorBox-TV-0.2.7.apk > TorBox-TV-0.2.7.apk.sha256
+          sha256sum -c TorBox-TV-0.2.7.apk.sha256
+          python3 - <<'PY'
+          import json,pathlib
+          info={
+            'schema':1,'package':'app.torboxtv.stable','versionCode':10,'versionName':'0.2.7',
+            'apkUrl':'https://raw.githubusercontent.com/to-shreds/apks/main/TorBox-TV-0.2.7.apk',
+            'sha256':'11ebf803de97d8e625cd14ea222902f5b72b8c2546ce7843329fe33ff785a500',
+            'bytes':5743525,
+            'notes':'Adds password-unlocked encrypted TorBox key recovery, stable updates, the LAN QR fix and the Buffstreams playback repair.'
+          }
+          pathlib.Path('torbox-tv-stable-latest.json').write_text(json.dumps(info,indent=2)+'\n')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add TorBox-TV-0.2.7.apk TorBox-TV-0.2.7.apk.sha256 torbox-tv-stable-latest.json
+          git commit -m 'Publish permanently signed TorBox TV 0.2.7 password vault'
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: torbox-tv-027-public-release
+          path: |
+            /tmp/TorBox-TV-0.2.7.apk
+            TorBox-TV-0.2.7.apk.sha256
+            torbox-tv-stable-latest.json
+          retention-days: 30
