@@ -3,6 +3,7 @@ package app.torboxtv.ui
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
@@ -22,10 +23,15 @@ import app.torboxtv.core.*
 import app.torboxtv.core.Target
 import app.torboxtv.data.CatalogClient
 import app.torboxtv.data.StateStore
+import app.torboxtv.data.PortableVault
+import app.torboxtv.data.PortableVaultClient
 import app.torboxtv.data.TorBoxClient
 import app.torboxtv.data.SourceClient
 import app.torboxtv.data.AppUpdate
 import kotlinx.coroutines.*
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.EncodeHintType
+import com.google.zxing.qrcode.QRCodeWriter
 import java.util.Locale
 
 /** Native TV interface. Its state and network clients are independent of the browser app. */
@@ -551,6 +557,9 @@ class MainActivity : Activity() {
         setting("Extra viewing time today", "Grant 30 minutes") { parentGate(force = true) { store.grantMinutes(30); message("Extra time added", "30 extra minutes are available for this profile today.") } }
         content.addView(text("Account", 19, accent, true).apply { setPadding(0, dp(17), 0, dp(10)) })
         setting("TorBox API key", "Change securely") { parentGate(force = true) { setup() } }
+        setting("Encrypted key recovery", "Set up or unlock on a new Firestick") {
+            parentGate(force = true) { setup() }
+        }
         setting("Sign out of TorBox", "Remove API key from this device") { parentGate(force = true) { confirm("Sign out?", "Saved viewing history and profiles stay on this device. You will need your API key to play again.") { store.clearKey(); setup() } } }
         content.addView(text("App updates", 19, accent, true).apply { setPadding(0, dp(17), 0, dp(10)) })
         setting("Phone remote", "Scan a QR code") { parentGate(force = true) { (application as TorBoxApplication).phone.showPairing(this) } }
@@ -576,10 +585,39 @@ class MainActivity : Activity() {
         heading("Welcome to TorBox TV", "Sports is ready. Connect TorBox for movies and shows.")
         val sports = button("Watch Sports without TorBox", "setup:sports") { showPage("Sports") }
         if (!store.currentProfile().kidMode) content.addView(sports, LinearLayout.LayoutParams(dp(285), dp(46)).apply { bottomMargin = dp(18) })
-        content.addView(text("Find your API key in the TorBox website's account settings. Enter it here using your Fire TV remote. Your key is encrypted on this device and is never displayed in playback logs.", 16, muted).apply { setPadding(0, 0, 0, dp(20)) })
+        content.addView(text("Already saved your encrypted TorBox key in the apks repository? Enter only your password to connect. Or create the encrypted file once on your phone.", 16, muted).apply { setPadding(0, 0, 0, dp(16)) })
+        val status = text("", 14, muted)
+        val unlock = button("Unlock saved key with password", "setup:unlock") {
+            inputDialog("TorBox vault password", "", true, numericSecret = false) { password ->
+                if (password.isBlank()) {
+                    status.text = "Enter your vault password."
+                } else {
+                    status.text = "Unlocking saved key from GitHub…"
+                    pageJob?.cancel()
+                    pageJob = pageScope.launch {
+                        try {
+                            val key = withContext(Dispatchers.IO) { PortableVaultClient().unlock(password) }
+                            withTimeout(20_000) { TorBoxClient(keyProvider = { key }).verify() }
+                            store.saveKey(key)
+                            showPage("Home")
+                        } catch (e: CancellationException) {
+                            if (e !is TimeoutCancellationException) throw e
+                            status.text = "The connection timed out. Try again."
+                        } catch (e: UserError) {
+                            status.text = e.message ?: "Could not unlock the saved key."
+                        } catch (_: Exception) {
+                            status.text = "Could not reach GitHub or verify TorBox. Check your network and try again."
+                        }
+                    }
+                }
+            }
+        }
+        content.addView(unlock, LinearLayout.LayoutParams(dp(315), dp(50)).apply { bottomMargin = dp(10) })
+        val createVault = button("Create encrypted key file on phone", "setup:create-vault") { showVaultSetupQr() }
+        content.addView(createVault, LinearLayout.LayoutParams(dp(315), dp(46)).apply { bottomMargin = dp(15) })
+        content.addView(text("Or enter the TorBox API key manually:", 14, muted).apply { setPadding(0, 0, 0, dp(9)) })
         val input = field("TorBox API key", true).apply { tag = "setup:key"; setSingleLine(true) }
         content.addView(input, LinearLayout.LayoutParams(-1, dp(52)).apply { bottomMargin = dp(12) })
-        val status = text("", 14, muted)
         val connect = button("Connect TorBox", "setup:connect") {}
         // EditText consumes directional keys for cursor movement. Give the remote
         // explicit exits on this single-line setup field, including Kid Mode where
@@ -587,7 +625,7 @@ class MainActivity : Activity() {
         input.setOnKeyListener { _, key, event ->
             if (event.action != KeyEvent.ACTION_DOWN) false else when (key) {
                 KeyEvent.KEYCODE_DPAD_DOWN -> connect.requestFocus()
-                KeyEvent.KEYCODE_DPAD_UP -> (if (sports.parent != null) sports else sidebar.getValue("Home")).requestFocus()
+                KeyEvent.KEYCODE_DPAD_UP -> createVault.requestFocus()
                 KeyEvent.KEYCODE_DPAD_LEFT -> if (input.selectionStart == 0 && input.selectionEnd == 0)
                     sidebar.getValue("Home").requestFocus() else false
                 else -> false
@@ -595,8 +633,22 @@ class MainActivity : Activity() {
         }
         sports.setOnKeyListener { _, key, event ->
             if (event.action != KeyEvent.ACTION_DOWN) false else when (key) {
-                KeyEvent.KEYCODE_DPAD_DOWN -> input.requestFocus()
+                KeyEvent.KEYCODE_DPAD_DOWN -> unlock.requestFocus()
                 KeyEvent.KEYCODE_DPAD_LEFT -> sidebar.getValue("Home").requestFocus()
+                else -> false
+            }
+        }
+        unlock.setOnKeyListener { _, key, event ->
+            if (event.action != KeyEvent.ACTION_DOWN) false else when (key) {
+                KeyEvent.KEYCODE_DPAD_DOWN -> createVault.requestFocus()
+                KeyEvent.KEYCODE_DPAD_UP -> (if (sports.parent != null) sports else sidebar.getValue("Home")).requestFocus()
+                else -> false
+            }
+        }
+        createVault.setOnKeyListener { _, key, event ->
+            if (event.action != KeyEvent.ACTION_DOWN) false else when (key) {
+                KeyEvent.KEYCODE_DPAD_DOWN -> input.requestFocus()
+                KeyEvent.KEYCODE_DPAD_UP -> unlock.requestFocus()
                 else -> false
             }
         }
@@ -632,7 +684,28 @@ class MainActivity : Activity() {
         content.addView(status)
         if (!store.key().isNullOrBlank()) content.addView(button("Keep current account", "setup:cancel") { showPage("Settings") }, LinearLayout.LayoutParams(dp(205), dp(46)).apply { topMargin = dp(16) })
         content.addView(text("No paid service is required beyond your TorBox account.", 12, muted).apply { setPadding(0, dp(24), 0, 0) })
-        if (store.key().isNullOrBlank() && !store.currentProfile().kidMode) sports.requestFocus() else input.requestFocus()
+        if (store.key().isNullOrBlank() && !store.currentProfile().kidMode) sports.requestFocus() else unlock.requestFocus()
+    }
+
+    private fun showVaultSetupQr() {
+        val url = PortableVault.SETUP_URL
+        val matrix = QRCodeWriter().encode(url, BarcodeFormat.QR_CODE, 480, 480, mapOf(EncodeHintType.MARGIN to 3))
+        val pixels = IntArray(matrix.width * matrix.height) { index ->
+            if (matrix[index % matrix.width, index / matrix.width]) Color.BLACK else Color.WHITE
+        }
+        val bitmap = Bitmap.createBitmap(pixels, matrix.width, matrix.height, Bitmap.Config.ARGB_8888)
+        val box = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(dp(24), dp(8), dp(24), dp(12))
+            gravity = Gravity.CENTER
+        }
+        box.addView(ImageView(this).apply { setImageBitmap(bitmap); contentDescription = "TorBox vault setup QR code" },
+            LinearLayout.LayoutParams(dp(226), dp(226)))
+        box.addView(text("Scan on your phone. Enter your TorBox API key and a password, download the encrypted vault file, and upload it to the root of to-shreds/apks once.", 15, ink).apply {
+            gravity = Gravity.CENTER; setPadding(0, dp(12), 0, dp(8))
+        })
+        box.addView(text(url, 13, accent).apply { gravity = Gravity.CENTER })
+        AlertDialog.Builder(this).setTitle("Set up password recovery").setView(box).setPositiveButton("Done", null).show()
     }
 
     private fun parentGate(force: Boolean = false, action: () -> Unit) {
@@ -659,10 +732,10 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun inputDialog(title: String, value: String, secret: Boolean, submit: (String) -> Unit) {
+    private fun inputDialog(title: String, value: String, secret: Boolean, numericSecret: Boolean = true, submit: (String) -> Unit) {
         val input = field(if (secret) "PIN" else title, secret).apply {
             setText(value); setSingleLine(true)
-            if (secret) inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
+            if (secret && numericSecret) inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
         }
         val box = LinearLayout(this).apply { setPadding(dp(24), dp(10), dp(24), dp(8)); addView(input, LinearLayout.LayoutParams(-1, dp(50))) }
         val dialog = AlertDialog.Builder(this).setTitle(title).setView(box).setPositiveButton("Save") { _, _ -> safely { submit(input.text.toString().trim()) } }.setNegativeButton("Cancel", null).show()
