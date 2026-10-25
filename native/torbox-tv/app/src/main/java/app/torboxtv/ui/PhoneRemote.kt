@@ -17,6 +17,8 @@ import android.view.KeyEvent
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import app.torboxtv.data.LanAddressCandidate
+import app.torboxtv.data.LanAddressSelector
 import app.torboxtv.data.PhoneRemoteServer
 import app.torboxtv.data.RemoteCommand
 import app.torboxtv.data.StateStore
@@ -24,7 +26,6 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.qrcode.QRCodeWriter
 import java.lang.ref.WeakReference
-import java.net.Inet4Address
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
@@ -61,13 +62,22 @@ class PhoneRemote(private val context: Context) {
         try {
             val connectivity = context.getSystemService(ConnectivityManager::class.java)
             val networks = listOfNotNull(connectivity.activeNetwork) + connectivity.allNetworks.toList()
-            val address = networks.distinct().asSequence().filter { network ->
-                val capabilities = connectivity.getNetworkCapabilities(network)
-                capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true ||
-                    capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) == true
-            }.flatMap { connectivity.getLinkProperties(it)?.linkAddresses.orEmpty().asSequence() }
-                .firstOrNull { it.address is Inet4Address && it.address.isSiteLocalAddress && it.prefixLength in 8..32 }
-                ?: throw IllegalStateException("Connect the Firestick and phone to the same home Wi-Fi, then try again.")
+            // The active network can be a VPN which also reports WIFI as an underlying
+            // transport. Use the real physical-link address, never that VPN tunnel.
+            val candidates = networks.distinct().flatMap { network ->
+                val capabilities = connectivity.getNetworkCapabilities(network) ?: return@flatMap emptyList()
+                val properties = connectivity.getLinkProperties(network) ?: return@flatMap emptyList()
+                properties.linkAddresses.map { link ->
+                    LanAddressCandidate(
+                        link.address, link.prefixLength, properties.interfaceName,
+                        capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI),
+                        capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET),
+                        capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+                    )
+                }
+            }
+            val address = LanAddressSelector.select(candidates)
+                ?: throw IllegalStateException("No usable Wi-Fi or Ethernet LAN address was found. Check the Firestick network connection, disable any VPN that blocks local traffic, and try again.")
             val existing = server
             if (existing == null || existing.isClosed || !existing.origin.startsWith("http://${address.address.hostAddress}:")) {
                 disconnect()
@@ -83,7 +93,7 @@ class PhoneRemote(private val context: Context) {
             val box = LinearLayout(activity).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(24), dp(8), dp(24), dp(8)); gravity = android.view.Gravity.CENTER }
             box.addView(ImageView(activity).apply { setImageBitmap(bitmap); contentDescription = "Phone remote pairing QR code" }, LinearLayout.LayoutParams(dp(210), dp(210)))
             box.addView(TextView(activity).apply {
-                text = "Scan with your phone camera. Keep both devices on the same Wi-Fi. The code connects this phone to the TV."
+                text = "Firestick LAN address: ${address.address.hostAddress}\\nScan with your phone camera on the same Wi-Fi. If the page does not load, check that this matches the Firestick network settings and disable VPN or guest-network isolation."
                 textSize = 15f; gravity = android.view.Gravity.CENTER; setPadding(0, dp(12), 0, 0)
             })
             pairing?.dismiss()
