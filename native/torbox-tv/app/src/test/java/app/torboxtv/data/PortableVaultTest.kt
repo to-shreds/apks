@@ -25,6 +25,11 @@ class PortableVaultTest {
         return JSONObject().put("format", PortableVault.FORMAT).put("iterations", PortableVault.ITERATIONS)
             .put("salt", b64(salt)).put("iv", b64(iv)).put("ciphertext", b64(encrypted)).toString()
     }
+    @Test fun webCryptoGoldenVaultDecryptsInAndroidCompatibleJce() {
+        val fromBrowser = """{"format":"torbox-tv-portable-key-v1","iterations":180000,"salt":"AAECAwQFBgcICQoLDA0ODw==","iv":"AAECAwQFBgcICQoL","ciphertext":"TUO+pL5WEk5psfKLfZkpzeDqjC/J/xf5LF4iL1i4ZvZMlka5W1hWcmAwppyBV+i2"}"""
+        assertEquals(sampleKey, PortableVault.decrypt(fromBrowser, "reusable sample password"))
+    }
+
     @Test fun unlocksPortableEncryptedKeyWithoutPersistingThePassphrase() {
         assertEquals(sampleKey, PortableVault.decrypt(sample(), "simple local password"))
     }
