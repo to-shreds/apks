@@ -2,7 +2,9 @@ name: Verify TorBox TV 0.2.7 portable vault and original playback
 on:
   push:
     branches: [feature/torbox-tv-vault-027]
-    paths: ['.github/workflows/torbox-tv-vault-027-check.yml']
+    paths:
+      - '.github/workflows/torbox-tv-vault-027-check.yml'
+      - 'native/torbox-tv/app/src/test/java/app/torboxtv/data/UpdatesTest.kt'
   workflow_dispatch:
 permissions:
   contents: read
