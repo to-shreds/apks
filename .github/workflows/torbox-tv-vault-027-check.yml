@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/torbox-tv-vault-027-check.yml'
       - 'native/torbox-tv/app/src/test/java/app/torboxtv/data/UpdatesTest.kt'
+      - 'native/torbox-tv/app/src/androidTest/java/app/torboxtv/RemoteSmokeTest.kt'
   workflow_dispatch:
 permissions:
   contents: read
