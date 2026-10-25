@@ -738,7 +738,7 @@ class MainActivity : Activity() {
             if (secret && numericSecret) inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
         }
         val box = LinearLayout(this).apply { setPadding(dp(24), dp(10), dp(24), dp(8)); addView(input, LinearLayout.LayoutParams(-1, dp(50))) }
-        val dialog = AlertDialog.Builder(this).setTitle(title).setView(box).setPositiveButton("Save") { _, _ -> safely { submit(input.text.toString().trim()) } }.setNegativeButton("Cancel", null).show()
+        val dialog = AlertDialog.Builder(this).setTitle(title).setView(box).setPositiveButton("Save") { _, _ -> safely { submit(if (secret && !numericSecret) input.text.toString() else input.text.toString().trim()) } }.setNegativeButton("Cancel", null).show()
         if (secret) dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
     }
 
