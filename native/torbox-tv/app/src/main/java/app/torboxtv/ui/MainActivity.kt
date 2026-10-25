@@ -613,7 +613,7 @@ class MainActivity : Activity() {
             }
         }
         content.addView(unlock, LinearLayout.LayoutParams(dp(315), dp(50)).apply { bottomMargin = dp(10) })
-        content.addView(status, LinearLayout.LayoutParams(-1, dp(38)))
+        content.addView(status, LinearLayout.LayoutParams(-1, -2).apply { bottomMargin = dp(10) })
         val createVault = button("Create encrypted key file on phone", "setup:create-vault") { showVaultSetupQr() }
         content.addView(createVault, LinearLayout.LayoutParams(dp(315), dp(46)).apply { bottomMargin = dp(15) })
         content.addView(text("Or enter the TorBox API key manually:", 14, muted).apply { setPadding(0, 0, 0, dp(9)) })
