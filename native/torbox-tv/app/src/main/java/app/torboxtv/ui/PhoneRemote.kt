@@ -93,7 +93,7 @@ class PhoneRemote(private val context: Context) {
             val box = LinearLayout(activity).apply { orientation = LinearLayout.VERTICAL; setPadding(dp(24), dp(8), dp(24), dp(8)); gravity = android.view.Gravity.CENTER }
             box.addView(ImageView(activity).apply { setImageBitmap(bitmap); contentDescription = "Phone remote pairing QR code" }, LinearLayout.LayoutParams(dp(210), dp(210)))
             box.addView(TextView(activity).apply {
-                text = "Firestick LAN address: ${address.address.hostAddress}\\nScan with your phone camera on the same Wi-Fi. If the page does not load, check that this matches the Firestick network settings and disable VPN or guest-network isolation."
+                text = "Firestick LAN address: ${address.address.hostAddress}\nScan with your phone camera on the same Wi-Fi. If the page does not load, check that this matches the Firestick network settings and disable VPN or guest-network isolation."
                 textSize = 15f; gravity = android.view.Gravity.CENTER; setPadding(0, dp(12), 0, 0)
             })
             pairing?.dismiss()
