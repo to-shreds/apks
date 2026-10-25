@@ -7,6 +7,6 @@ APK Shelf on Fire TV lists APKs from two sources in this repository.
 
 After uploading, open APK Shelf on Fire TV and choose **Refresh**. Version 1.0.2 and later show both sources in one list. You don't need a rebuild for each new upload.
 
-**Update APK Shelf:** [APK-Shelf-1.0.2.apk](APK-Shelf-1.0.2.apk) is in this root folder, so existing APK Shelf 1.0.1 users can select it to install the update. [Direct download](https://raw.githubusercontent.com/to-shreds/apks/main/APK-Shelf-1.0.2.apk).
+**Latest APK Shelf (1.0.3):** [APK-Shelf-1.0.3.apk](APK-Shelf-1.0.3.apk) is in this root folder, so existing APK Shelf users can select it to install the update. [Direct download](https://raw.githubusercontent.com/to-shreds/apks/main/APK-Shelf-1.0.3.apk).
 
 This repository and its published release assets are public. Only upload software you are entitled to redistribute.
