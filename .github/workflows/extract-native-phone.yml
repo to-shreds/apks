@@ -1,0 +1,36 @@
+name: Extract TorBox TV phone-remote source for repair
+on:
+  push:
+    branches: [fix/torbox-tv-phone-remote-lan]
+    paths: ['.github/workflows/extract-native-phone.yml']
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore exact 0.2.5 verified source
+        run: |
+          set -euo pipefail
+          mkdir -p native
+          unzip -q .build/TorBox-TV-0.2.5-candidate-source.zip -d native
+          cd native/torbox-tv
+          python3 scripts/check_boundaries.py
+          cd ../..
+          echo "Relevant source files:"
+          find native/torbox-tv -type f \( -iname '*phone*' -o -iname '*lan*' -o -iname '*remote*' -o -iname '*pair*' \) -print
+          if find native/torbox-tv -type f \( -iname '*.jks' -o -iname '*.keystore' -o -iname '*.p12' \) | grep .; then
+            echo 'Unexpected signing key in source, refusing to commit'
+            exit 1
+          fi
+      - name: Retain original candidate source tree on isolated repair branch
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add native/torbox-tv
+          if ! git diff --cached --quiet; then
+            git commit -m "Unpack verified TorBox TV source for isolated phone remote repair"
+            git push
+          fi
