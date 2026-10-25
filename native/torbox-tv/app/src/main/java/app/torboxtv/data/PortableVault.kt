@@ -50,10 +50,10 @@ object PortableVault {
     }
 }
 
-class PortableVaultClient {
+class PortableVaultClient internal constructor(private val endpoint: String = PortableVault.FILE_URL) {
     fun unlock(password: String): String {
         if (password.isBlank()) throw UserError("Enter your vault password.")
-        val connection = URL(PortableVault.FILE_URL).openConnection() as HttpURLConnection
+        val connection = URL(endpoint).openConnection() as HttpURLConnection
         connection.connectTimeout = 6000
         connection.readTimeout = 7000
         connection.instanceFollowRedirects = false
