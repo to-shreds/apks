@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
 class UpdatesTest {
     private val payload = ByteArray(100_000) { (it % 251).toByte() }
     private fun manifest(code: Long = 8, data: ByteArray = payload) = JSONObject()
-        .put("schema", 1).put("package", "app.torboxtv.stable".put("versionCode", code).put("versionName", "0.2.5")
+        .put("schema", 1).put("package", "app.torboxtv.stable").put("versionCode", code).put("versionName", "0.2.5")
         .put("apkUrl", UpdateChannel.BASE + "TorBox-TV-0.2.5.apk")
         .put("sha256", UpdateChannel.sha256(data)).put("bytes", data.size).put("notes", "Reliability fixes")
     private fun directory() = Files.createTempDirectory("apk-updater-test").toFile()
