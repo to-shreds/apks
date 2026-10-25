@@ -1,0 +1,111 @@
+name: Verify and publish TorBox TV 0.2.6 LAN phone fix
+on:
+  push:
+    branches: [fix/torbox-tv-phone-remote-lan]
+    paths: ['.github/workflows/torbox-tv-phone-fix-026.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify-and-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.13'
+      - name: Verify isolated 0.2.6 source and build native test app
+        run: |
+          set -euo pipefail
+          sdkmanager 'platforms;android-36' 'build-tools;35.0.0'
+          cd native/torbox-tv
+          python3 scripts/check_boundaries.py
+          gradle --no-daemon --console=plain --no-build-cache -Pkotlin.incremental=false testDebugUnitTest lintDebug assembleDebug assembleDebugAndroidTest
+      - name: Free space for accelerated TV emulator
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android/sdk/ndk
+      - name: Allow emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Test real phone QR, native server and browsing on Android TV
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: default
+          arch: x86_64
+          profile: tv_1080p
+          disk-size: 2048M
+          enable-hw-keyboard: true
+          emulator-boot-timeout: 240
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none -no-snapshot-save
+          disable-animations: true
+          script: |
+            adb shell wm size 1920x1080
+            adb shell wm density 320
+            gradle -p native/torbox-tv --no-daemon --console=plain installDebug installDebugAndroidTest
+            adb shell appops set app.torboxtv REQUEST_INSTALL_PACKAGES allow
+            gradle -p native/torbox-tv --no-daemon --console=plain --no-build-cache -Pkotlin.incremental=false connectedDebugAndroidTest
+      - name: Package separate-install test version without touching either original app
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          gradle = Path('native/torbox-tv/app/build.gradle.kts')
+          text = gradle.read_text()
+          old = 'applicationId = "app.torboxtv"'
+          if text.count(old) != 1 or 'versionCode = 9' not in text or 'versionName = "0.2.6"' not in text:
+              raise SystemExit('Unexpected version or package definition')
+          gradle.write_text(text.replace(old, 'applicationId = "app.torboxtv.lanfix"'))
+          manifest = Path('native/torbox-tv/app/src/main/AndroidManifest.xml')
+          text = manifest.read_text()
+          label = 'android:label="TorBox TV"'
+          if text.count(label) != 1:
+              raise SystemExit('Unexpected app label definition')
+          manifest.write_text(text.replace(label, 'android:label="TorBox TV 0.2.6 Test"'))
+          PY
+          gradle -p native/torbox-tv --no-daemon --console=plain --no-build-cache -Pkotlin.incremental=false assembleDebug
+          apk=native/torbox-tv/app/build/outputs/apk/debug/app-debug.apk
+          test -s "$apk"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$apk" | tee /tmp/torbox-badging.txt
+          grep -q "package: name='app.torboxtv.lanfix' versionCode='9' versionName='0.2.6'" /tmp/torbox-badging.txt
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$apk"
+          unzip -t "$apk" >/dev/null
+          cp "$apk" "$RUNNER_TEMP/TorBox-TV-0.2.6-phone-remote-fix-test.apk"
+          (cd "$RUNNER_TEMP" && sha256sum TorBox-TV-0.2.6-phone-remote-fix-test.apk > TorBox-TV-0.2.6-phone-remote-fix-test.apk.sha256)
+      - name: Publish verified APK to APK Shelf repository root
+        shell: bash
+        run: |
+          set -euo pipefail
+          git restore native/torbox-tv/app/build.gradle.kts native/torbox-tv/app/src/main/AndroidManifest.xml
+          git fetch origin main
+          git switch --detach origin/main
+          cp "$RUNNER_TEMP/TorBox-TV-0.2.6-phone-remote-fix-test.apk" .
+          cp "$RUNNER_TEMP/TorBox-TV-0.2.6-phone-remote-fix-test.apk.sha256" .
+          sha256sum -c TorBox-TV-0.2.6-phone-remote-fix-test.apk.sha256
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add TorBox-TV-0.2.6-phone-remote-fix-test.apk TorBox-TV-0.2.6-phone-remote-fix-test.apk.sha256
+          git diff --cached --quiet || {
+            git commit -m 'Publish tested TorBox TV 0.2.6 VPN-safe phone remote APK'
+            git push origin HEAD:main
+          }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: torbox-tv-026-phone-remote-qa
+          path: |
+            native/torbox-tv/app/build/reports/
+            native/torbox-tv/app/build/test-results/
+            native/torbox-tv/app/build/outputs/androidTest-results/
+          retention-days: 30
