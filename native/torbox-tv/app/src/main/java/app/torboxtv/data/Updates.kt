@@ -25,15 +25,15 @@ data class AppUpdate(val code: Long, val version: String, val url: String, val s
 
 /** Public APK distribution only. This client never receives account credentials or media URLs. */
 object UpdateChannel {
-    const val BASE = "https://raw.githubusercontent.com/to-shreds/torbox-web-player/native-updates/native/updates/"
-    const val MANIFEST = BASE + "latest.json"
-    const val CERTIFICATE = "a624a6387fdd119fec69897b8386fbdcb4eeb073987c7abc7ac18626b426cedf"
+    const val BASE = "https://raw.githubusercontent.com/to-shreds/apks/main/"
+    const val MANIFEST = BASE + "torbox-tv-stable-latest.json"
+    const val CERTIFICATE = "143948886131206f40b2a1f42826fb548c143488fa91f1ce4cac7b65ff84b507"
     const val MAX_APK_BYTES = 100L * 1024 * 1024
 
     fun parse(raw: String): AppUpdate {
         require(raw.toByteArray(Charsets.UTF_8).size <= 32_768) { "Update information is too large." }
         val json = JSONObject(raw)
-        require(json.getInt("schema") == 1 && json.getString("package") == "app.torboxtv") { "This update is for a different app." }
+        require(json.getInt("schema") == 1 && json.getString("package") == "app.torboxtv.stable") { "This update is for a different app." }
         val code = json.getLong("versionCode")
         val version = json.getString("versionName")
         val url = json.getString("apkUrl")
@@ -42,7 +42,7 @@ object UpdateChannel {
         require(code in 1..Int.MAX_VALUE.toLong() && version.matches(Regex("[0-9]+\\.[0-9]+\\.[0-9]+"))) { "Invalid update version." }
         require(hash.matches(Regex("[0-9a-f]{64}")) && bytes in 1..MAX_APK_BYTES) { "Invalid update file information." }
         // A fixed owner/repository/branch/path, HTTPS, no credentials, query or redirects.
-        require(url == BASE + "releases/TorBox-TV-$version-test.apk") { "Unapproved update download." }
+        require(url == BASE + "TorBox-TV-$version.apk") { "Unapproved update download." }
         val notes = json.optString("notes").take(1500)
         return AppUpdate(code, version, url, hash, bytes, notes)
     }
@@ -74,7 +74,7 @@ class UpdateClient internal constructor(private val http: OkHttpClient = OkHttpC
 
     suspend fun download(update: AppUpdate, directory: File, progress: (Int) -> Unit = {}): File {
         // Validate callers as well as remote manifests before any request or file mutation.
-        UpdateChannel.parse(JSONObject().put("schema", 1).put("package", "app.torboxtv")
+        UpdateChannel.parse(JSONObject().put("schema", 1).put("package", "app.torboxtv.stable")
             .put("versionCode", update.code).put("versionName", update.version).put("apkUrl", update.url)
             .put("sha256", update.sha256).put("bytes", update.bytes).toString())
         return request(update.url) { response, active ->
