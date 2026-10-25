@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "package": "app.torboxtv.stable",
+  "versionCode": 10,
+  "versionName": "0.2.7",
+  "apkUrl": "https://raw.githubusercontent.com/to-shreds/apks/main/TorBox-TV-0.2.7.apk",
+  "sha256": "11ebf803de97d8e625cd14ea222902f5b72b8c2546ce7843329fe33ff785a500",
+  "bytes": 5743525,
+  "notes": "Adds password-unlocked encrypted TorBox key recovery, stable updates, the LAN QR fix and the Buffstreams playback repair."
+}
