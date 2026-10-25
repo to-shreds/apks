@@ -1,6 +1,8 @@
 package app.torboxtv
 
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.graphics.drawable.BitmapDrawable
 import android.os.SystemClock
 import android.widget.EditText
@@ -77,6 +79,21 @@ class PhoneRemoteDeviceTest {
         val until=SystemClock.elapsedRealtime()+5000
         while(SystemClock.elapsedRealtime()<until){var done=false;main{done=predicate()};if(done)return;SystemClock.sleep(40)}
         fail(message)
+    }
+
+    @Test fun pairingUrlUsesThePhysicalWifiOrEthernetAddressNotAVpn() {
+        val url = pair()
+        val connectivity = context.getSystemService(ConnectivityManager::class.java)
+        val physical = connectivity.allNetworks.any { network ->
+            val capabilities = connectivity.getNetworkCapabilities(network)
+            val properties = connectivity.getLinkProperties(network)
+            capabilities != null && properties != null &&
+                !capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN) &&
+                (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) &&
+                properties.linkAddresses.any { it.address.hostAddress == url.host }
+        }
+        assertTrue("QR host must belong to a physical non-VPN interface", physical)
     }
 
     @Test fun displayedQrDecodesToTheActualPairedLocalServer(){
