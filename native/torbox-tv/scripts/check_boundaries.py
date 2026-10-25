@@ -46,7 +46,7 @@ for path in source_files:
     relative = path.relative_to(ROOT)
     for pattern, message in [
         (r"\bandroid\.webkit\b|\bWebView\b", "Native app must not contain a WebView wrapper"),
-        (r"https?://[^\s\"']*(?:onrender\.com|github\.io|git\.chatgpt-team\.site)", "App must not depend on the browser deployment or a project media proxy"),
+        (r"https?://[^\s\"']*(?:onrender\.com|to-shreds\.github\.io/torbox-web-player|git\.chatgpt-team\.site)", "App must not depend on the browser deployment or a project media proxy"),
         (r"torbox-web-player" if path.name != "Updates.kt" else r"https://to-shreds\.github\.io", "Native runtime must not reach into the browser application"),
         (r"\b(?:HttpLoggingInterceptor|BODY_LOGGING|setLogLevel)\b", "HTTP/body logging risks exposing the TorBox key and signed video URLs"),
         (r"\b(?:Log\.[vdiew]|println|printStackTrace)\s*\([^\n]*(?:apiKey|token|credential|password|playbackUrl|streamUrl)", "Sensitive runtime values must not be logged"),
@@ -60,8 +60,8 @@ for coordinate in ("com.google.android.gms", "com.google.firebase", "com.android
 require(bool(re.search(r"minSdk\s*=\s*26\b", gradle)), "Recheck documented Fire OS 8 Android API 30 compatibility after changing minimum SDK")
 require("androidx.media3:media3-exoplayer" in gradle, "Expected native playback dependency is missing")
 updates = (ROOT / "app/src/main/java/app/torboxtv/data/Updates.kt").read_text()
-require('https://raw.githubusercontent.com/to-shreds/torbox-web-player/native-updates/native/updates/' in updates,
-        "APK updates must use the separate public GitHub download channel")
+require('https://raw.githubusercontent.com/to-shreds/apks/main/' in updates,
+        "Stable APK updates must use the public apks channel")
 require('followRedirects(false)' in updates and 'UpdateChannel.CERTIFICATE' in updates,
         "Updater must reject redirects and enforce the original APK signer")
 require(not re.search(r'TorBoxClient|SourceClient|MediaHostGuard|Authorization', updates),
