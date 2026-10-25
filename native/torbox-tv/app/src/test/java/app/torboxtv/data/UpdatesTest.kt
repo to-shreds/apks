@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit
 class UpdatesTest {
     private val payload = ByteArray(100_000) { (it % 251).toByte() }
     private fun manifest(code: Long = 8, data: ByteArray = payload) = JSONObject()
-        .put("schema", 1).put("package", "app.torboxtv").put("versionCode", code).put("versionName", "0.2.5")
-        .put("apkUrl", UpdateChannel.BASE + "releases/TorBox-TV-0.2.5-test.apk")
+        .put("schema", 1).put("package", "app.torboxtv.stable".put("versionCode", code).put("versionName", "0.2.5")
+        .put("apkUrl", UpdateChannel.BASE + "TorBox-TV-0.2.5.apk")
         .put("sha256", UpdateChannel.sha256(data)).put("bytes", data.size).put("notes", "Reliability fixes")
     private fun directory() = Files.createTempDirectory("apk-updater-test").toFile()
     private fun client(server: MockWebServer): UpdateClient = UpdateClient(OkHttpClient.Builder()
@@ -26,7 +26,7 @@ class UpdatesTest {
             val original = chain.request()
             assertEquals("raw.githubusercontent.com", original.url.host)
             assertNull(original.header("Authorization"))
-            assertTrue(original.url.encodedPath.startsWith("/to-shreds/torbox-web-player/native-updates/native/updates/"))
+            assertTrue(original.url.encodedPath.startsWith("/to-shreds/apks/main/"))
             chain.proceed(original.newBuilder().url(server.url(original.url.encodedPath)).build())
         }.build())
     private fun rejects(action: () -> Unit) { try { action(); fail("Unsafe update was accepted") } catch (_: IllegalArgumentException) {} }
