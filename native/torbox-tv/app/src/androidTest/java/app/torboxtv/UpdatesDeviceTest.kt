@@ -36,7 +36,7 @@ class UpdatesDeviceTest {
         File(context.applicationInfo.sourceDir).copyTo(apk, overwrite = true)
         val info = context.packageManager.getPackageInfo(context.packageName, PackageManager.GET_SIGNING_CERTIFICATES)
         signer = UpdateChannel.sha256(info.signingInfo!!.apkContentsSigners.single().toByteArray())
-        update = AppUpdate(info.longVersionCode, info.versionName!!, UpdateChannel.BASE + "releases/TorBox-TV-${info.versionName}-test.apk",
+        update = AppUpdate(info.longVersionCode, info.versionName!!, UpdateChannel.BASE + "TorBox-TV-${info.versionName}.apk",
             UpdateChannel.sha256(apk.readBytes()), apk.length(), "Device fixture")
     }
     @After fun clean() { activity.finishActivity(); apk.delete() }
