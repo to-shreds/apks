@@ -613,6 +613,7 @@ class MainActivity : Activity() {
             }
         }
         content.addView(unlock, LinearLayout.LayoutParams(dp(315), dp(50)).apply { bottomMargin = dp(10) })
+        content.addView(status, LinearLayout.LayoutParams(-1, dp(38)))
         val createVault = button("Create encrypted key file on phone", "setup:create-vault") { showVaultSetupQr() }
         content.addView(createVault, LinearLayout.LayoutParams(dp(315), dp(46)).apply { bottomMargin = dp(15) })
         content.addView(text("Or enter the TorBox API key manually:", 14, muted).apply { setPadding(0, 0, 0, dp(9)) })
@@ -681,7 +682,6 @@ class MainActivity : Activity() {
             }
         }
         content.addView(connect, LinearLayout.LayoutParams(dp(205), dp(46)).apply { bottomMargin = dp(12) })
-        content.addView(status)
         if (!store.key().isNullOrBlank()) content.addView(button("Keep current account", "setup:cancel") { showPage("Settings") }, LinearLayout.LayoutParams(dp(205), dp(46)).apply { topMargin = dp(16) })
         content.addView(text("No paid service is required beyond your TorBox account.", 12, muted).apply { setPadding(0, dp(24), 0, 0) })
         if (store.key().isNullOrBlank() && !store.currentProfile().kidMode) sports.requestFocus() else unlock.requestFocus()
@@ -733,7 +733,7 @@ class MainActivity : Activity() {
     }
 
     private fun inputDialog(title: String, value: String, secret: Boolean, numericSecret: Boolean = true, submit: (String) -> Unit) {
-        val input = field(if (secret) "PIN" else title, secret).apply {
+        val input = field(if (secret && numericSecret) "PIN" else title, secret).apply {
             setText(value); setSingleLine(true)
             if (secret && numericSecret) inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
         }
