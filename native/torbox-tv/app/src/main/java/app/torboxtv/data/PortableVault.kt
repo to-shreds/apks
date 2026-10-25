@@ -1,6 +1,6 @@
 package app.torboxtv.data
 
-import android.util.Base64
+import java.util.Base64
 import app.torboxtv.core.Policies
 import app.torboxtv.core.UserError
 import org.json.JSONObject
@@ -30,9 +30,9 @@ object PortableVault {
         val doc = JSONObject(jsonText)
         require(doc.getString("format") == FORMAT && doc.getInt("iterations") == ITERATIONS)
         require(doc.length() == 5)
-        val salt = Base64.decode(doc.getString("salt"), Base64.NO_WRAP)
-        val iv = Base64.decode(doc.getString("iv"), Base64.NO_WRAP)
-        val data = Base64.decode(doc.getString("ciphertext"), Base64.NO_WRAP)
+        val salt = Base64.getDecoder().decode(doc.getString("salt"))
+        val iv = Base64.getDecoder().decode(doc.getString("iv"))
+        val data = Base64.getDecoder().decode(doc.getString("ciphertext"))
         require(salt.size == 16 && iv.size == 12 && data.size in 32..1024)
         val spec = PBEKeySpec(password.toCharArray(), salt, ITERATIONS, 256)
         val keyBytes = try {
