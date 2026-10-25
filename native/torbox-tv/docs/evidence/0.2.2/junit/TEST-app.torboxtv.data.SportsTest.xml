@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.data.SportsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-11T02:31:03.313Z" hostname="c9e0d5fc4ec0" time="0.005">
+  <properties/>
+  <testcase name="malformedCatalogCannotIntroduceNewDestinations" classname="app.torboxtv.data.SportsTest" time="0.0"/>
+  <testcase name="bundledCatalogIncludesFreeTennisAndPadelArchives" classname="app.torboxtv.data.SportsTest" time="0.004"/>
+  <testcase name="resumeRewindsAndNeverRestartsFinishedReplays" classname="app.torboxtv.data.SportsTest" time="0.0"/>
+  <testcase name="sportsMediaPolicyRejectsCredentialsCleartextPortsAndLookalikes" classname="app.torboxtv.data.SportsTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.data.NetworkReliabilityTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-24T03:53:14.374Z" hostname="df7d3555c8b6" time="0.147">
+  <properties/>
+  <testcase name="partialProviderOutageRemainsRetryableAndKeepsUsefulSources" classname="app.torboxtv.data.NetworkReliabilityTest" time="0.048"/>
+  <testcase name="emptyResponsePlusProviderOutageDoesNotCacheACompleteNoMatch" classname="app.torboxtv.data.NetworkReliabilityTest" time="0.004"/>
+  <testcase name="simultaneousClientsCannotCreateTheSameUnconfirmedPreparationTwice" classname="app.torboxtv.data.NetworkReliabilityTest" time="0.036"/>
+  <testcase name="invalidationWhileVerifyingCachedBatchCannotRegainCacheOwnership" classname="app.torboxtv.data.NetworkReliabilityTest" time="0.012"/>
+  <testcase name="interruptedCachedPreparationTriesTheNextVerifiedSourceWithoutRepeatingThePost" classname="app.torboxtv.data.NetworkReliabilityTest" time="0.019"/>
+  <testcase name="olderCompletedDiscoveryCannotReplaceNewerResult" classname="app.torboxtv.data.NetworkReliabilityTest" time="0.005"/>
+  <testcase name="invalidationPreventsAnInFlightDiscoveryFromRestoringStaleCache" classname="app.torboxtv.data.NetworkReliabilityTest" time="0.004"/>
+  <testcase name="accountRateLimitStopsAlternativesAndKeepsTheCooldown" classname="app.torboxtv.data.NetworkReliabilityTest" time="0.006"/>
+  <testcase name="cancellationStopsAlternativesAndPreservesAmbiguousPreparationMarker" classname="app.torboxtv.data.NetworkReliabilityTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

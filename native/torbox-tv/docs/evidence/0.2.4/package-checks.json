@@ -1,0 +1,15 @@
+{
+  "tested_files": 51,
+  "changed_tested_files": [],
+  "apk_bytes": 11590823,
+  "apk_sha256": "c49d0de7577b7e0097fdf2b111e14b8523da064fe181b3b7e882d88610e24a7b",
+  "apk_crc_ok": true,
+  "sports_catalog_preserved": true,
+  "phone_page_matches_source": true,
+  "duplicate_dex_classes": [],
+  "dex_class_count": 10842,
+  "private_keys_in_source": [],
+  "original_apk_unchanged": true,
+  "original_source_unchanged": true,
+  "final_workflow_yaml_valid": true
+}

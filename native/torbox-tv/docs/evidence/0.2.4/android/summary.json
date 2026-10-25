@@ -1,0 +1,237 @@
+{
+  "name": "app.torboxtv.PhoneRemoteDeviceTest",
+  "tests": "45",
+  "failures": "0",
+  "errors": "0",
+  "skipped": "2",
+  "time": "326.468",
+  "timestamp": "2026-10-24T04:17:35",
+  "hostname": "localhost",
+  "cases": [
+    {
+      "class": "app.torboxtv.PhoneRemoteDeviceTest",
+      "name": "displayedQrDecodesToTheActualPairedLocalServer",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PhoneRemoteDeviceTest",
+      "name": "phoneTypingUpdatesRealNativeSearchAndRejectsStaleTextWithoutChangingAccountOrSettings",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PhoneRemoteDeviceTest",
+      "name": "unpairedPhoneCannotSendKeysAndHomeClosesTheSession",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PhoneRemoteDeviceTest",
+      "name": "sportsSearchWorksWithoutTorBoxButNeverBypassesKidMode",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PhoneRemoteDeviceTest",
+      "name": "timedOutPhoneCommandCannotRunLaterOnADifferentScreen",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PlayerLifecycleDeviceTest",
+      "name": "homeDuringPendingLinkCancelsItAndReturnStaysPaused",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PlayerLifecycleDeviceTest",
+      "name": "screenOffReceiverWhileLinkIsPendingMustPreventAutoplay",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PlayerLifecycleDeviceTest",
+      "name": "fortyRapidVersionReopensKeepPositionAndHonorTheLastPause",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PlayerLifecycleDeviceTest",
+      "name": "nativePauseUpdatesRecoveryIntentAndPlaybackCanResume",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PlayerLifecycleDeviceTest",
+      "name": "pairedPhoneCanPauseAnOpeningVideoAndResumeTheNativePlayer",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PlayerLifecycleDeviceTest",
+      "name": "terminalFailureMustNotRestartFromAnOldStartupDeadline",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PlayerLifecycleDeviceTest",
+      "name": "remotePauseWhileLinkIsPendingMustSurviveItsCompletion",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.PlayerLifecycleDeviceTest",
+      "name": "toggleWhileOpeningMustPauseTheRequestedPlayback",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "updateCheckIsRemoteOperableWithoutTorBoxAndNeverDownloadsWithoutConsent",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "sportsCatalogOpensAndReturnsWithoutTorBoxCredentials",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "qualitySettingsDialogAndPersistenceWorkWithRemote",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "automaticUpdatePreferencePersistsWithoutChangingPlaybackSettings",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "kidProfileCannotOpenSettingsWithoutParentPin",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "unconfiguredKidProfileStillCannotOpenSports",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "homeLoadingHasBoundedOutcomeAndNativeScreensAreCaptured",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "phoneRemotePairingIsReachableWithTheRemoteWithoutTorBox",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "storedMyListIsRenderedByNativeViews",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "nativeMenusAndBackRemainUsableWhileCatalogLoads",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "interruptedDetailsReloadsInsteadOfRenderingIncompleteSeries",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.RemoteSmokeTest",
+      "name": "launcherSetupAndInvalidKeyAreRemoteOperable",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.SportsLifecycleDeviceTest",
+      "name": "screenOffDuringReplayResolutionPreventsLateAutoplay",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.SportsLifecycleDeviceTest",
+      "name": "toggleDuringReplayResolutionUsesRequestedPlayIntent",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.SportsLifecycleDeviceTest",
+      "name": "sourceChangesPreserveTheCurrentPlayPauseIntentAfterHome",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.SportsLifecycleDeviceTest",
+      "name": "explicitRetryAfterHomeRequestsPlayback",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.SportsLifecycleDeviceTest",
+      "name": "remotePauseDuringReplayResolutionPreventsLateAutoplay",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "preparationClaimIsAtomicAcrossPersistentLedgerInstances",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "credentialTamperingFailsClosedWithoutCrashing",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "keystoreCredentialRoundTripsWithoutPlaintextPreferences",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "watchedTimePersistsAcrossInstancesAndSeekDoesNotChargePosition",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "missingCurrentSnapshotRecoversHistoryAndRemainsInKidMode",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "damagedUsageCannotResetKidAllowanceAndPastDayRollsOver",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "separateInstancesPersistHistorySettingsAndIsolateProfiles",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "missingUsagePrimaryDoesNotResetDailyAllowance",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "corruptCurrentSnapshotCannotSilentlyUnlockKidProfile",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.StateStoreDeviceTest",
+      "name": "pinVerifierAcceptsOnlyCorrectPinAndRejectsCorruption",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.UpdatesDeviceTest",
+      "name": "systemInstallerOpensAndCancelKeepsInstalledAppAndPreferences",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.UpdatesDeviceTest",
+      "name": "fileProviderExposesOnlyUpdateCacheWithReadOnlyInstallIntent",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.UpdatesDeviceTest",
+      "name": "archiveInspectionChecksActualPackageVersionAndSigningCertificate",
+      "skipped": false
+    },
+    {
+      "class": "app.torboxtv.UpgradePreservationDeviceTest",
+      "name": "verify",
+      "skipped": true
+    },
+    {
+      "class": "app.torboxtv.UpgradePreservationDeviceTest",
+      "name": "seed",
+      "skipped": true
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "versionCode": 4,
+  "jvm": {
+    "tests": 107,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1
+  },
+  "lintErrors": 0,
+  "lintWarnings": 32,
+  "nativeSources": 13,
+  "deviceTestsExecuted": false,
+  "signingCertificateSHA256": "a624a6387fdd119fec69897b8386fbdcb4eeb073987c7abc7ac18626b426cedf"
+}

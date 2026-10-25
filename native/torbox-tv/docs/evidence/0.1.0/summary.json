@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0",
+  "apk_bytes": 7030466,
+  "apk_sha256": "e0da66cb0d6b74df156e81ab233ea15786ce9598c04207b365512a9466df5df6",
+  "tests": 86,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "lint_errors": 0,
+  "lint_warnings": 25,
+  "device_tests_authored": 13,
+  "device_tests_run": 0,
+  "signing_certificate_sha256": "a624a6387fdd119fec69897b8386fbdcb4eeb073987c7abc7ac18626b426cedf"
+}

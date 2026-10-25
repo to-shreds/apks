@@ -1,0 +1,12 @@
+{
+  "jvm": {
+    "tests": 165,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1
+  },
+  "lint": {
+    "Warning": 40,
+    "Hint": 1
+  }
+}

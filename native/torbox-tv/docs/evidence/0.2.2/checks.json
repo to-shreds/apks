@@ -1,0 +1,25 @@
+{
+  "junit": {
+    "tests": 123,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1
+  },
+  "passed": 122,
+  "lint": {
+    "Warning": 40
+  },
+  "apk_size": 6977086,
+  "apk_sha256": "904292756d4d9337395896297c413a954d793e47c42987dd3e4420f2f7953d38",
+  "crc_failure": null,
+  "signature_v2": true,
+  "certificate_sha256": "a624a6387fdd119fec69897b8386fbdcb4eeb073987c7abc7ac18626b426cedf",
+  "package": "app.torboxtv",
+  "version_name": "0.2.2",
+  "version_code": 5,
+  "min_sdk": 26,
+  "target_sdk": 35,
+  "build_outcome": "BUILD SUCCESSFUL",
+  "build_duration": "3m 5s",
+  "instrumentation": "Compiled, not executed"
+}

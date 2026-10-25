@@ -1,0 +1,188 @@
+[
+  {
+    "id": "tt6933238",
+    "small": {
+      "status": 200,
+      "seconds": 9.659,
+      "bytes": 40565,
+      "final_url": "https://live.metahub.space/poster/small/tt6933238/img",
+      "format": "JPEG",
+      "dimensions": [
+        300,
+        450
+      ],
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    "medium": {
+      "status": 200,
+      "seconds": 8.368,
+      "bytes": 54429,
+      "final_url": "https://live.metahub.space/poster/medium/tt6933238/img",
+      "format": "JPEG",
+      "dimensions": [
+        500,
+        750
+      ],
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    "metadata_headers": {
+      "cors": "*"
+    },
+    "metadata_art": {
+      "id": "tt6933238",
+      "imdb_id": "tt6933238",
+      "poster": "https://images.metahub.space/poster/small/tt6933238/img",
+      "background": "https://images.metahub.space/background/medium/tt6933238/img"
+    }
+  },
+  {
+    "id": "tt21097264",
+    "small": {
+      "status": 200,
+      "seconds": 9.585,
+      "bytes": 32311,
+      "final_url": "https://live.metahub.space/poster/small/tt21097264/img",
+      "format": "JPEG",
+      "dimensions": [
+        300,
+        450
+      ],
+      "extrema": [
+        [
+          1,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          251
+        ]
+      ]
+    },
+    "medium": {
+      "status": 200,
+      "seconds": 8.366,
+      "bytes": 87340,
+      "final_url": "https://live.metahub.space/poster/medium/tt21097264/img",
+      "format": "JPEG",
+      "dimensions": [
+        500,
+        750
+      ],
+      "extrema": [
+        [
+          3,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          251
+        ]
+      ]
+    },
+    "metadata_headers": {
+      "cors": "*"
+    },
+    "metadata_art": {
+      "id": "tt21097264",
+      "imdb_id": "tt21097264",
+      "poster": "https://images.metahub.space/poster/small/tt21097264/img",
+      "background": "https://images.metahub.space/background/medium/tt21097264/img"
+    }
+  },
+  {
+    "id": "tt37972251",
+    "small": {
+      "status": 200,
+      "seconds": 9.593,
+      "bytes": 6576,
+      "final_url": "https://live.metahub.space/poster/small/tt37972251/img",
+      "format": "JPEG",
+      "dimensions": [
+        300,
+        450
+      ],
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    "medium": {
+      "status": 200,
+      "seconds": 8.365,
+      "bytes": 106089,
+      "final_url": "https://live.metahub.space/poster/medium/tt37972251/img",
+      "format": "JPEG",
+      "dimensions": [
+        500,
+        750
+      ],
+      "extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          246
+        ],
+        [
+          0,
+          245
+        ]
+      ]
+    },
+    "metadata_headers": {
+      "cors": "*"
+    },
+    "metadata_art": {
+      "id": "tt37972251",
+      "imdb_id": "tt37972251",
+      "poster": "https://images.metahub.space/poster/small/tt37972251/img",
+      "background": "https://images.metahub.space/background/medium/tt37972251/img"
+    }
+  }
+]

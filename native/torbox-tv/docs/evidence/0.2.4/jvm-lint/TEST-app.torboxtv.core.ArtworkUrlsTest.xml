@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.core.ArtworkUrlsTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-24T03:53:13.596Z" hostname="df7d3555c8b6" time="0.089">
+  <properties/>
+  <testcase name="stillRejectsImpersonationCredentialsPortsAndCleartext" classname="app.torboxtv.core.ArtworkUrlsTest" time="0.027"/>
+  <testcase name="failedOrUndecodablePrimaryRecoversWithOtherSize" classname="app.torboxtv.core.ArtworkUrlsTest" time="0.053"/>
+  <testcase name="fallbackKeepsExactTitleAndDeduplicatesMedium" classname="app.torboxtv.core.ArtworkUrlsTest" time="0.004"/>
+  <testcase name="transientFailureRetriesOnceAndEventuallyStops" classname="app.torboxtv.core.ArtworkUrlsTest" time="0.001"/>
+  <testcase name="acceptsActualLiveProviderRedirectAndDirectMetadata" classname="app.torboxtv.core.ArtworkUrlsTest" time="0.0"/>
+  <testcase name="cancelledScreenNeverStartsAnotherRequest" classname="app.torboxtv.core.ArtworkUrlsTest" time="0.001"/>
+  <testcase name="emptyPlanDoesNoWork" classname="app.torboxtv.core.ArtworkUrlsTest" time="0.001"/>
+  <testcase name="successfulPrimaryDoesNotFetchAlternates" classname="app.torboxtv.core.ArtworkUrlsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

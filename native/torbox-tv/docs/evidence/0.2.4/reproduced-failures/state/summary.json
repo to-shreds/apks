@@ -1,0 +1,17 @@
+{
+  "before": {
+    "tests": "6",
+    "failures": "4",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.255"
+  },
+  "after": {
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.225"
+  },
+  "scope": "Actual production StateStore with deterministic SharedPreferences test implementation; real Android SharedPreferences cases are authored separately and require instrumentation execution."
+}

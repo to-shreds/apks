@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.data.StressAuditTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-24T03:53:15.802Z" hostname="df7d3555c8b6" time="0.41">
+  <properties/>
+  <testcase name="hostileDestinationsNeverBecomeNativeMedia" classname="app.torboxtv.data.StressAuditTest" time="0.06"/>
+  <testcase name="concurrentTitlesKeepSourceIdentityAndEvictWithoutCrossContamination" classname="app.torboxtv.data.StressAuditTest" time="0.198"/>
+  <testcase name="repeatedCancellationLeavesNoProviderJobsAndNextPlaybackStillWorks" classname="app.torboxtv.data.StressAuditTest" time="0.152"/>
+  <system-out><![CDATA[AUDIT: 16000 rejected media-policy assertions and 2000 accepted CDN controls passed
+AUDIT: 320 concurrent-title discoveries plus 320 cached/re-discovery checks passed; active provider jobs=0; peak=80
+AUDIT: 200 cancel/reopen cycles passed; active provider jobs=0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

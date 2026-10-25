@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="app.torboxtv.PhoneRemoteDeviceTest" tests="45" failures="0" errors="0" skipped="2" time="326.468" timestamp="2026-10-24T04:17:35" hostname="localhost">
+  <properties>
+    <property name="device" value="emulator-5554 - 11" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="displayedQrDecodesToTheActualPairedLocalServer" classname="app.torboxtv.PhoneRemoteDeviceTest" time="3.092" />
+  <testcase name="phoneTypingUpdatesRealNativeSearchAndRejectsStaleTextWithoutChangingAccountOrSettings" classname="app.torboxtv.PhoneRemoteDeviceTest" time="4.595" />
+  <testcase name="unpairedPhoneCannotSendKeysAndHomeClosesTheSession" classname="app.torboxtv.PhoneRemoteDeviceTest" time="4.975" />
+  <testcase name="sportsSearchWorksWithoutTorBoxButNeverBypassesKidMode" classname="app.torboxtv.PhoneRemoteDeviceTest" time="6.78" />
+  <testcase name="timedOutPhoneCommandCannotRunLaterOnADifferentScreen" classname="app.torboxtv.PhoneRemoteDeviceTest" time="5.104" />
+  <testcase name="homeDuringPendingLinkCancelsItAndReturnStaysPaused" classname="app.torboxtv.PlayerLifecycleDeviceTest" time="9.718" />
+  <testcase name="screenOffReceiverWhileLinkIsPendingMustPreventAutoplay" classname="app.torboxtv.PlayerLifecycleDeviceTest" time="4.105" />
+  <testcase name="fortyRapidVersionReopensKeepPositionAndHonorTheLastPause" classname="app.torboxtv.PlayerLifecycleDeviceTest" time="4.131" />
+  <testcase name="nativePauseUpdatesRecoveryIntentAndPlaybackCanResume" classname="app.torboxtv.PlayerLifecycleDeviceTest" time="5.17" />
+  <testcase name="pairedPhoneCanPauseAnOpeningVideoAndResumeTheNativePlayer" classname="app.torboxtv.PlayerLifecycleDeviceTest" time="3.11" />
+  <testcase name="terminalFailureMustNotRestartFromAnOldStartupDeadline" classname="app.torboxtv.PlayerLifecycleDeviceTest" time="4.264" />
+  <testcase name="remotePauseWhileLinkIsPendingMustSurviveItsCompletion" classname="app.torboxtv.PlayerLifecycleDeviceTest" time="2.999" />
+  <testcase name="toggleWhileOpeningMustPauseTheRequestedPlayback" classname="app.torboxtv.PlayerLifecycleDeviceTest" time="2.406" />
+  <testcase name="updateCheckIsRemoteOperableWithoutTorBoxAndNeverDownloadsWithoutConsent" classname="app.torboxtv.RemoteSmokeTest" time="22.893" />
+  <testcase name="sportsCatalogOpensAndReturnsWithoutTorBoxCredentials" classname="app.torboxtv.RemoteSmokeTest" time="5.158" />
+  <testcase name="qualitySettingsDialogAndPersistenceWorkWithRemote" classname="app.torboxtv.RemoteSmokeTest" time="20.426" />
+  <testcase name="automaticUpdatePreferencePersistsWithoutChangingPlaybackSettings" classname="app.torboxtv.RemoteSmokeTest" time="45.871" />
+  <testcase name="kidProfileCannotOpenSettingsWithoutParentPin" classname="app.torboxtv.RemoteSmokeTest" time="9.328" />
+  <testcase name="unconfiguredKidProfileStillCannotOpenSports" classname="app.torboxtv.RemoteSmokeTest" time="7.704" />
+  <testcase name="homeLoadingHasBoundedOutcomeAndNativeScreensAreCaptured" classname="app.torboxtv.RemoteSmokeTest" time="16.586" />
+  <testcase name="phoneRemotePairingIsReachableWithTheRemoteWithoutTorBox" classname="app.torboxtv.RemoteSmokeTest" time="21.674" />
+  <testcase name="storedMyListIsRenderedByNativeViews" classname="app.torboxtv.RemoteSmokeTest" time="7.323" />
+  <testcase name="nativeMenusAndBackRemainUsableWhileCatalogLoads" classname="app.torboxtv.RemoteSmokeTest" time="34.036" />
+  <testcase name="interruptedDetailsReloadsInsteadOfRenderingIncompleteSeries" classname="app.torboxtv.RemoteSmokeTest" time="6.541" />
+  <testcase name="launcherSetupAndInvalidKeyAreRemoteOperable" classname="app.torboxtv.RemoteSmokeTest" time="3.714" />
+  <testcase name="screenOffDuringReplayResolutionPreventsLateAutoplay" classname="app.torboxtv.SportsLifecycleDeviceTest" time="4.88" />
+  <testcase name="toggleDuringReplayResolutionUsesRequestedPlayIntent" classname="app.torboxtv.SportsLifecycleDeviceTest" time="4.586" />
+  <testcase name="sourceChangesPreserveTheCurrentPlayPauseIntentAfterHome" classname="app.torboxtv.SportsLifecycleDeviceTest" time="12.973" />
+  <testcase name="explicitRetryAfterHomeRequestsPlayback" classname="app.torboxtv.SportsLifecycleDeviceTest" time="9.392" />
+  <testcase name="remotePauseDuringReplayResolutionPreventsLateAutoplay" classname="app.torboxtv.SportsLifecycleDeviceTest" time="3.849" />
+  <testcase name="preparationClaimIsAtomicAcrossPersistentLedgerInstances" classname="app.torboxtv.StateStoreDeviceTest" time="0.709" />
+  <testcase name="credentialTamperingFailsClosedWithoutCrashing" classname="app.torboxtv.StateStoreDeviceTest" time="0.384" />
+  <testcase name="keystoreCredentialRoundTripsWithoutPlaintextPreferences" classname="app.torboxtv.StateStoreDeviceTest" time="0.101" />
+  <testcase name="watchedTimePersistsAcrossInstancesAndSeekDoesNotChargePosition" classname="app.torboxtv.StateStoreDeviceTest" time="0.119" />
+  <testcase name="missingCurrentSnapshotRecoversHistoryAndRemainsInKidMode" classname="app.torboxtv.StateStoreDeviceTest" time="0.03" />
+  <testcase name="damagedUsageCannotResetKidAllowanceAndPastDayRollsOver" classname="app.torboxtv.StateStoreDeviceTest" time="0.002" />
+  <testcase name="separateInstancesPersistHistorySettingsAndIsolateProfiles" classname="app.torboxtv.StateStoreDeviceTest" time="0.031" />
+  <testcase name="missingUsagePrimaryDoesNotResetDailyAllowance" classname="app.torboxtv.StateStoreDeviceTest" time="0.03" />
+  <testcase name="corruptCurrentSnapshotCannotSilentlyUnlockKidProfile" classname="app.torboxtv.StateStoreDeviceTest" time="0.059" />
+  <testcase name="pinVerifierAcceptsOnlyCorrectPinAndRejectsCorruption" classname="app.torboxtv.StateStoreDeviceTest" time="2.433" />
+  <testcase name="systemInstallerOpensAndCancelKeepsInstalledAppAndPreferences" classname="app.torboxtv.UpdatesDeviceTest" time="4.591" />
+  <testcase name="fileProviderExposesOnlyUpdateCacheWithReadOnlyInstallIntent" classname="app.torboxtv.UpdatesDeviceTest" time="0.3" />
+  <testcase name="archiveInspectionChecksActualPackageVersionAndSigningCertificate" classname="app.torboxtv.UpdatesDeviceTest" time="1.668" />
+  <testcase name="verify" classname="app.torboxtv.UpgradePreservationDeviceTest" time="0.013">
+    <skipped />
+  </testcase>
+  <testcase name="seed" classname="app.torboxtv.UpgradePreservationDeviceTest" time="0.004">
+    <skipped />
+  </testcase>
+</testsuite>

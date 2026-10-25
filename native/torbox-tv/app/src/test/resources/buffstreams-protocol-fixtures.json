@@ -1,0 +1,108 @@
+{
+  "chains": [
+    {
+      "id": "58500",
+      "master": "https://chatgpt.hereisman.net/playlist/58500/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-MEDIA:TYPE=CLOSED-CAPTIONS,GROUP-ID=\"cc\",LANGUAGE=\"en\",NAME=\"English\",AUTOSELECT=YES,INSTREAM-ID=\"CC1\"\n#EXT-X-STREAM-INF:BANDWIDTH=4000000,AVERAGE-BANDWIDTH=3200000,CODECS=\"avc1.64001f, mp4a.40.2\",RESOLUTION=1280x720,CLOSED-CAPTIONS=\"cc\"\nhttps://pl.kamfir5.space/playlist/58500/b.backstore2.space/caxi\n",
+      "variant": "https://pl.kamfir5.space/playlist/58500/b.backstore2.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:2141\n#EXTINF:5.000000,\nhttps://b.backstore2.space/scripts/NTg1MDA=/p1792859678642743493_2141.txt\n#EXTINF:5.000000,\nhttps://b.backstore2.space/scripts/NTg1MDA=/p1792859678642743493_2142.txt\n#EXTINF:5.000000,\nhttps://b.backstore2.space/scripts/NTg1MDA=/p1792859678642743493_2143.txt\n",
+      "masterOrigin": "captured live master"
+    },
+    {
+      "id": "58508",
+      "master": "https://chatgpt.hereisman.net/playlist/58508/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-MEDIA:TYPE=CLOSED-CAPTIONS,GROUP-ID=\"cc\",LANGUAGE=\"en\",NAME=\"English\",AUTOSELECT=YES,INSTREAM-ID=\"CC1\"\n#EXT-X-STREAM-INF:BANDWIDTH=4000000,AVERAGE-BANDWIDTH=3200000,CODECS=\"avc1.64001f, mp4a.40.2\",RESOLUTION=1280x720,CLOSED-CAPTIONS=\"cc\"\nhttps://pl.wearestrong1.space/playlist/58508/a.newvegan3.space/caxi\n",
+      "variant": "https://pl.wearestrong1.space/playlist/58508/a.newvegan3.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:1938\n#EXTINF:5.000000,\nhttps://a.newvegan3.space/scripts/NTg1MDg=/p1792859708324540429_1938.txt\n#EXTINF:5.000000,\nhttps://a.newvegan3.space/scripts/NTg1MDg=/p1792859708324540429_1939.txt\n#EXTINF:5.000000,\nhttps://a.newvegan3.space/scripts/NTg1MDg=/p1792859708324540429_1940.txt\n",
+      "masterOrigin": "captured live master"
+    },
+    {
+      "id": "58511",
+      "master": "https://chatgpt.hereisman.net/playlist/58511/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-MEDIA:TYPE=CLOSED-CAPTIONS,GROUP-ID=\"cc\",LANGUAGE=\"en\",NAME=\"English\",AUTOSELECT=YES,INSTREAM-ID=\"CC1\"\n#EXT-X-STREAM-INF:BANDWIDTH=4000000,AVERAGE-BANDWIDTH=3200000,CODECS=\"avc1.64001f, mp4a.40.2\",RESOLUTION=1280x720,CLOSED-CAPTIONS=\"cc\"\nhttps://pl.playlist5.space/playlist/58511/a.newstore4.space/caxi\n",
+      "variant": "https://pl.playlist5.space/playlist/58511/a.newstore4.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:1373\n#EXTINF:5.000000,\nhttps://a.newstore4.space/scripts/NTg1MTE=/p1792857842426209322_1373.txt\n#EXTINF:5.000000,\nhttps://a.newstore4.space/scripts/NTg1MTE=/p1792857842426209322_1374.txt\n#EXTINF:5.000000,\nhttps://a.newstore4.space/scripts/NTg1MTE=/p1792857842426209322_1375.txt\n",
+      "masterOrigin": "captured live master"
+    },
+    {
+      "id": "58512",
+      "master": "https://chatgpt.hereisman.net/playlist/58512/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-MEDIA:TYPE=CLOSED-CAPTIONS,GROUP-ID=\"cc\",LANGUAGE=\"en\",NAME=\"English\",AUTOSELECT=YES,INSTREAM-ID=\"CC1\"\n#EXT-X-STREAM-INF:BANDWIDTH=4000000,AVERAGE-BANDWIDTH=3200000,CODECS=\"avc1.64001f, mp4a.40.2\",RESOLUTION=1280x720,CLOSED-CAPTIONS=\"cc\"\nhttps://pl.whywelove2.space/playlist/58512/a.cestamoi9.space/caxi\n",
+      "variant": "https://pl.whywelove2.space/playlist/58512/a.cestamoi9.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:4\n#EXT-X-MEDIA-SEQUENCE:1721\n#EXTINF:4.000000,\nhttps://a.cestamoi9.space/scripts/NTg1MTI=/p1792857843527845816_1721.txt\n#EXTINF:4.000000,\nhttps://a.cestamoi9.space/scripts/NTg1MTI=/p1792857843527845816_1722.txt\n#EXTINF:4.000000,\nhttps://a.cestamoi9.space/scripts/NTg1MTI=/p1792857843527845816_1723.txt\n",
+      "masterOrigin": "captured live master"
+    },
+    {
+      "id": "58513",
+      "master": "https://chatgpt.hereisman.net/playlist/58513/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-MEDIA:TYPE=CLOSED-CAPTIONS,GROUP-ID=\"cc\",LANGUAGE=\"en\",NAME=\"English\",AUTOSELECT=YES,INSTREAM-ID=\"CC1\"\n#EXT-X-STREAM-INF:BANDWIDTH=4000000,AVERAGE-BANDWIDTH=3200000,CODECS=\"avc1.64001f, mp4a.40.2\",RESOLUTION=1280x720,CLOSED-CAPTIONS=\"cc\"\nhttps://pl.playlist6.space/playlist/58513/a.finir10.space/caxi\n",
+      "variant": "https://pl.playlist6.space/playlist/58513/a.finir10.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:1302\n#EXTINF:5.000000,\nhttps://a.finir10.space/scripts/NTg1MTM=/p1792860811931930136_1302.txt\n#EXTINF:5.000000,\nhttps://a.finir10.space/scripts/NTg1MTM=/p1792860811931930136_1303.txt\n#EXTINF:5.000000,\nhttps://a.finir10.space/scripts/NTg1MTM=/p1792860811931930136_1304.txt\n",
+      "masterOrigin": "captured live master"
+    },
+    {
+      "id": "58508",
+      "master": "https://chatgpt.hereisman.net/playlist/58508/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=4000000\nhttps://chatgpt.hereisman.net/playlist/58508/a.newvegan3.space/caxi\n",
+      "variant": "https://chatgpt.hereisman.net/playlist/58508/a.newvegan3.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:1908\n#EXTINF:5.000000,\nhttps://a.newvegan3.space/scripts/NTg1MDg=/p1792859708324540429_1908.txt\n#EXTINF:5.000000,\nhttps://a.newvegan3.space/scripts/NTg1MDg=/p1792859708324540429_1909.txt\n#EXTINF:5.000000,\nhttps://a.newvegan3.space/scripts/NTg1MDg=/p1792859708324540429_1910.txt\n",
+      "masterOrigin": "reconstructed declaration of previously master-referenced captured variant"
+    },
+    {
+      "id": "58511",
+      "master": "https://chatgpt.hereisman.net/playlist/58511/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=4000000\nhttps://pl.playlist6.space/playlist/58511/a.newstore2.space/caxi\n",
+      "variant": "https://pl.playlist6.space/playlist/58511/a.newstore2.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:1345\n#EXTINF:5.000000,\nhttps://a.newstore2.space/scripts/NTg1MTE=/p1792857842426209322_1345.txt\n#EXTINF:5.000000,\nhttps://a.newstore2.space/scripts/NTg1MTE=/p1792857842426209322_1346.txt\n#EXTINF:5.000000,\nhttps://a.newstore2.space/scripts/NTg1MTE=/p1792857842426209322_1347.txt\n",
+      "masterOrigin": "reconstructed declaration of previously master-referenced captured variant"
+    },
+    {
+      "id": "58512",
+      "master": "https://chatgpt.hereisman.net/playlist/58512/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=4000000\nhttps://pl.playlist5.space/playlist/58512/a.cestamoi9.space/caxi\n",
+      "variant": "https://pl.playlist5.space/playlist/58512/a.cestamoi9.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:4\n#EXT-X-MEDIA-SEQUENCE:1685\n#EXTINF:4.000000,\nhttps://a.cestamoi9.space/scripts/NTg1MTI=/p1792857843527845816_1685.txt\n#EXTINF:4.000000,\nhttps://a.cestamoi9.space/scripts/NTg1MTI=/p1792857843527845816_1686.txt\n#EXTINF:4.000000,\nhttps://a.cestamoi9.space/scripts/NTg1MTI=/p1792857843527845816_1687.txt\n",
+      "masterOrigin": "reconstructed declaration of previously master-referenced captured variant"
+    },
+    {
+      "id": "58508",
+      "master": "https://chatgpt.hereisman.net/playlist/58508/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=4000000\nhttps://pl.playlist3.space/playlist/58508/a.newvegan4.space/caxi\n",
+      "variant": "https://pl.playlist3.space/playlist/58508/a.newvegan4.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:1908\n#EXTINF:5.000000,\nhttps://a.newvegan4.space/scripts/NTg1MDg=/p1792859708324540429_1908.txt\n#EXTINF:5.000000,\nhttps://a.newvegan4.space/scripts/NTg1MDg=/p1792859708324540429_1909.txt\n#EXTINF:5.000000,\nhttps://a.newvegan4.space/scripts/NTg1MDg=/p1792859708324540429_1910.txt\n",
+      "masterOrigin": "reconstructed declaration of previously master-referenced captured variant"
+    },
+    {
+      "id": "58511",
+      "master": "https://chatgpt.hereisman.net/playlist/58511/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=4000000\nhttps://pl.wearestrong1.space/playlist/58511/a.newstore4.space/caxi\n",
+      "variant": "https://pl.wearestrong1.space/playlist/58511/a.newstore4.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:1345\n#EXTINF:5.000000,\nhttps://a.newstore4.space/scripts/NTg1MTE=/p1792857842426209322_1345.txt\n#EXTINF:5.000000,\nhttps://a.newstore4.space/scripts/NTg1MTE=/p1792857842426209322_1346.txt\n#EXTINF:5.000000,\nhttps://a.newstore4.space/scripts/NTg1MTE=/p1792857842426209322_1347.txt\n",
+      "masterOrigin": "reconstructed declaration of previously master-referenced captured variant"
+    },
+    {
+      "id": "58500",
+      "master": "https://chatgpt.hereisman.net/playlist/58500/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=4000000\nhttps://pl.goozekhar2.space/playlist/58500/b.backstore1.space/caxi\n",
+      "variant": "https://pl.goozekhar2.space/playlist/58500/b.backstore1.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:2112\n#EXTINF:5.000000,\nhttps://b.backstore1.space/scripts/NTg1MDA=/p1792859678642743493_2112.txt\n#EXTINF:5.000000,\nhttps://b.backstore1.space/scripts/NTg1MDA=/p1792859678642743493_2113.txt\n#EXTINF:5.000000,\nhttps://b.backstore1.space/scripts/NTg1MDA=/p1792859678642743493_2114.txt\n",
+      "masterOrigin": "reconstructed declaration of previously master-referenced captured variant"
+    },
+    {
+      "id": "58512",
+      "master": "https://chatgpt.hereisman.net/playlist/58512/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=4000000\nhttps://pl.whywelove2.space/playlist/58512/a.newvegan1.space/caxi\n",
+      "variant": "https://pl.whywelove2.space/playlist/58512/a.newvegan1.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:4\n#EXT-X-MEDIA-SEQUENCE:1683\n#EXTINF:4.000000,\nhttps://a.newvegan1.space/scripts/NTg1MTI=/p1792857843527845816_1683.txt\n#EXTINF:4.000000,\nhttps://a.newvegan1.space/scripts/NTg1MTI=/p1792857843527845816_1684.txt\n#EXTINF:4.000000,\nhttps://a.newvegan1.space/scripts/NTg1MTI=/p1792857843527845816_1685.txt\n",
+      "masterOrigin": "reconstructed declaration of previously master-referenced captured variant"
+    },
+    {
+      "id": "58513",
+      "master": "https://chatgpt.hereisman.net/playlist/58513/load-playlist",
+      "masterBody": "#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=4000000\nhttps://pl.whywelove1.space/playlist/58513/a.finir10.space/caxi\n",
+      "variant": "https://pl.whywelove1.space/playlist/58513/a.finir10.space/caxi",
+      "variantBody": "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-TARGETDURATION:5\n#EXT-X-MEDIA-SEQUENCE:1272\n#EXTINF:5.000000,\nhttps://a.finir10.space/scripts/NTg1MTM=/p1792860811931930136_1272.txt\n#EXTINF:5.000000,\nhttps://a.finir10.space/scripts/NTg1MTM=/p1792860811931930136_1273.txt\n#EXTINF:5.000000,\nhttps://a.finir10.space/scripts/NTg1MTM=/p1792860811931930136_1274.txt\n",
+      "masterOrigin": "reconstructed declaration of previously master-referenced captured variant"
+    }
+  ]
+}

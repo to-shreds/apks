@@ -1,0 +1,19 @@
+# TorBox TV 0.2.1 Buffstreams test build
+
+Package app.torboxtv; Android versionCode 4; min SDK 26, target SDK 35. APK size: 7,096,254 bytes. APK SHA-256: `6d7c05ae4ef7a2861921dd5fc6333c483e1d5106bfd12996cfc6b64297eb86ca`.
+
+Adds native live game browsing from the exact site supplied by the user, https://mybuffstreams.plus. Current listing categories map NFL, college football and CFL to American football, and NHL to Hockey. Listings refresh on Sports entry and through Refresh games. The separate twelve-hour listing cache is tied to the provider address. Source address accepts a validated HTTPS Buffstreams root; bounded validated redirects are supported. A changed player/CDN contract can still require a connector update.
+
+Browsing retains event names and dates, omitting scores, result-bearing titles, finished games and images. Fresh public event/player metadata resolves up to four server choices. The app does not execute provider JavaScript or load a browser. Native Media3 sends the public player Referer and user agent; media goes directly to the device. Master/variant hosts and the two probed R2 accounts are guarded. Authorization/Cookie, invalid Referer, cleartext, credentials in URLs and unsupported destinations are rejected. Signed segment URLs are never stored in listing state. Time/size/redirect limits and cancellable metadata calls bound failure.
+
+The original four channels and sixteen full padel sessions remain bundled. Existing movie identity/source policy, credentials, profiles, settings, artwork, history, parental control, native playback and resume behavior are retained. Sports remains adult-only. Default quality is 720p, with quality/audio/Go Live/Retry controls. No TorBox key, extra account, subscription, VPN configuration, Render or project video relay is required by Sports.
+
+Verification: app and instrumentation APK compile; JVM 107 registered, 106 passed, zero failures/errors, one optional existing check skipped. Nine new tests cover score filtering, category mapping, addresses, server parsing, fresh resolution/public headers, rejected redirects, cancellation, oversized metadata and media accounts. Lint: zero errors, 32 warnings. Native isolation/privacy checks pass on thirteen Kotlin files. APK package/version/SDK, v2 signature and the final title-filter code were verified.
+
+Signing certificate SHA-256: `a624a6387fdd119fec69897b8386fbdcb4eeb073987c7abc7ac18626b426cedf`, matching 0.1.0/0.1.1/0.2.0. Install as an update without uninstalling. This is a debuggable test build. The independent native repository still returns 404; no native Actions/release publication is claimed.
+
+Actual public probes of two college-football servers returned valid masters, variants and MPEG-TS segment bytes. A bounded 1 MiB probe identified H.264 1280x720 with AAC audio. These are transport/format checks, not an actual live NFL-game test or Firestick playback/remote/audio acceptance. Thirteen existing instrumentation scenarios remain compiled but unexecuted.
+
+The same provider rejected playlist requests with our GitHub Pages Origin, limited segment CORS to its own origin, and blocked a sandboxed browser frame through its frame-ancestor policy. Therefore no Buffstreams web tile was published. The independent web runtime remains release-1.2.0-sports.1; only findings/handoff documentation was updated. No Buffstreams football replay archive was verified or implemented. The original live-and-archived requirement across both apps is still incomplete.
+
+Toolchain: Gradle 8.13, AGP 8.11.1, Kotlin 2.2.21, JDK 17.0.20.1, Android SDK 36/build tools 35.0.0, Media3 1.11.1. Unavailable old tool links and invalid generated/download cache files were repaired; build-only Work certificates were imported without altering Android TLS. The original private signing key is excluded from the source archive. All earlier deliverables remain preserved.

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.data.LiveMetadataTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2026-10-11T02:31:03.215Z" hostname="c9e0d5fc4ec0" time="0.001">
+  <properties/>
+  <testcase name="liveCatalogAndIndependentSourceContracts" classname="app.torboxtv.data.LiveMetadataTest" time="0.001">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

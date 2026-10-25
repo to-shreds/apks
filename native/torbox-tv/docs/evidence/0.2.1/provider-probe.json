@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-10",
+  "provider": "https://mybuffstreams.plus",
+  "servers": [
+    57831,
+    57848
+  ],
+  "nativeStyleMasterStatuses": [
+    200,
+    200
+  ],
+  "nativeStyleVariantStatuses": [
+    200,
+    200
+  ],
+  "segmentStatus": 206,
+  "mpegTsSyncByte": 71,
+  "boundedVideoProbeBytes": 1048576,
+  "codec": "h264",
+  "width": 1280,
+  "height": 720,
+  "audio": "aac",
+  "appOriginPlaylistStatus": 403,
+  "appOriginSegmentCors": null,
+  "providerOriginSegmentCors": "https://gooz.aapmains.net",
+  "providerFrameAncestorsExcludeGithubPages": true,
+  "browserFrameStarted": false,
+  "physicalFirestickTested": false,
+  "fullFootballArchiveVerified": false
+}

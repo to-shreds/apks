@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.data.LiveMetadataTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-10T02:50:22.986Z" hostname="71ec82b4c446" time="16.539">
+  <properties/>
+  <testcase name="liveCatalogAndIndependentSourceContracts" classname="app.torboxtv.data.LiveMetadataTest" time="16.539"/>
+  <system-out><![CDATA[PUBLIC LIVE SMOKE: browse=49, search=7, IMDb=tt0113497, verifiedSources=37, providers=Zilean, StremThru backup, StremThru
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

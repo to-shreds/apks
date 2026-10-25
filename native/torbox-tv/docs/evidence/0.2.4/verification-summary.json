@@ -1,0 +1,19 @@
+{
+  "normal_native": {
+    "tests": 45,
+    "passed": 43,
+    "failures": 0,
+    "errors": 0,
+    "skipped_reserved_upgrade": 2,
+    "run": 40060681225,
+    "overall_job": "failed after passing tests during redundant uninstall cleanup"
+  },
+  "signed_upgrade": {
+    "phases_passed": 2,
+    "run": 40061903081,
+    "overall_job": "success",
+    "uses_exact_final_signed_apk": true
+  },
+  "jvm_distinct_passed_across_normal_and_live": 165,
+  "phone_browser_passed": 6
+}

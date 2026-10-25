@@ -1,0 +1,62 @@
+name: Native signed upgrade verification
+on:
+  push:
+    branches: [verify/torbox-tv-0.2.4]
+    paths:
+      - "projects/torbox-tv/artifacts/verification-0.2.4/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - name: Confirm exact signed inputs
+        run: |
+          echo '341468c84946aed57f08b9ee0a114ef9760f25d5c06fc8ef87bed96feab1e0d5  projects/torbox-tv/artifacts/TorBox-TV-0.2.3-test.apk' | sha256sum -c -
+          echo 'c49d0de7577b7e0097fdf2b111e14b8523da064fe181b3b7e882d88610e24a7b  projects/torbox-tv/artifacts/verification-0.2.4/TorBox-TV-0.2.4-signed-candidate.apk' | sha256sum -c -
+          echo 'f9c5d6f1016376a1d060b5cff4f3dd04a18cc08db5a86311d23b102474638d15  projects/torbox-tv/artifacts/verification-0.2.4/TorBox-TV-0.2.4-upgrade-tests.apk' | sha256sum -c -
+      - name: Free unused runner disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android/sdk/ndk
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Original signed install, seed, replace and verify
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: default
+          arch: x86_64
+          profile: tv_1080p
+          disk-size: 2048M
+          enable-hw-keyboard: true
+          emulator-boot-timeout: 240
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none -no-snapshot-save
+          disable-animations: true
+          script: |
+            mkdir -p native-update-evidence
+            adb install projects/torbox-tv/artifacts/TorBox-TV-0.2.3-test.apk
+            adb install -t projects/torbox-tv/artifacts/verification-0.2.4/TorBox-TV-0.2.4-upgrade-tests.apk
+            adb shell am instrument -w -e upgradeFixture true -e class 'app.torboxtv.UpgradePreservationDeviceTest#seed' app.torboxtv.test/androidx.test.runner.AndroidJUnitRunner | tee native-update-evidence/seed-original.log
+            grep -q 'OK (1 test)' native-update-evidence/seed-original.log
+            adb install -r projects/torbox-tv/artifacts/verification-0.2.4/TorBox-TV-0.2.4-signed-candidate.apk
+            adb shell am instrument -w -e upgradeFixture true -e class 'app.torboxtv.UpgradePreservationDeviceTest#verify' app.torboxtv.test/androidx.test.runner.AndroidJUnitRunner | tee native-update-evidence/verify-upgrade.log
+            grep -q 'OK (1 test)' native-update-evidence/verify-upgrade.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-signed-upgrade-evidence
+          path: native-update-evidence/
+          retention-days: 30

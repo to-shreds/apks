@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.core.PoliciesTest" tests="66" skipped="0" failures="0" errors="0" timestamp="2026-10-10T23:12:59.306Z" hostname="c9e0d5fc4ec0" time="0.375">
+  <properties/>
+  <testcase name="substringTitleRejected" classname="app.torboxtv.core.PoliciesTest" time="0.006"/>
+  <testcase name="seekDistanceAndNegativeTicksNeverCountAsWatchedTime" classname="app.torboxtv.core.PoliciesTest" time="0.006"/>
+  <testcase name="movieHasNoAutoNext" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="movieRemakeRejected" classname="app.torboxtv.core.PoliciesTest" time="0.002"/>
+  <testcase name="wrongEpisodeRejected" classname="app.torboxtv.core.PoliciesTest" time="0.008"/>
+  <testcase name="corruptionCannotSwitchKidToAdult" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="qualityPreferenceAndDuplicateHashesApplied" classname="app.torboxtv.core.PoliciesTest" time="0.004"/>
+  <testcase name="explicitForeignOnlyReleasesExcluded" classname="app.torboxtv.core.PoliciesTest" time="0.002"/>
+  <testcase name="completedHistoryStartsOver" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="timeLimitBlocksAlreadyChargedItem" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="kidModeUsesAllowancesWithoutClaimingAgeRatings" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="shortEpisodeCountsAtTwentyPercent" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="ambiguousSeriesPackRejected" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="nextEpisodeSortedAcrossSeasonBoundary" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="splitEpisodeConflictingPartRejected" classname="app.torboxtv.core.PoliciesTest" time="0.002"/>
+  <testcase name="sampleAndNonvideoFilesRejected" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="wrongSeasonRejected" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="movieMissingYearRejected" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="remakeYearInsideOriginalSeriesRunRejected" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="exactMovieMatches" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="textualSeasonPackAccepted" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="unnumberedEpisodeFileRejected" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="settingsClampedAndOffModesPreserved" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="recoveryNeverRetriesSameSourceAndHasGlobalBound" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="unrelatedTitleFileRejectedEvenWithRightNumber" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="movieUnknownCatalogYearRejected" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="resumeRewindsSavedPosition" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="languageTagsDoNotMatchSubstringsInOrdinaryTitles" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="newCountdownInvalidatesOlderTitleToken" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="sequelSubtitleRejected" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="disabledAutoNextCreatesNoCountdown" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="exactFileFromSeasonPackMatches" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="similarlyNamedSeriesRemakeRejected" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="yearInsideTitleNotConfusedWithRelease" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="countLimitAllowsSameChargedEpisodeToFinish" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="wrongSeasonPackRejected" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="usageCannotOverflow" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="camReleasesRejected" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="laterExpectedYearCannotHideWrongPrimaryYear" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="knownQualityPrecedesUnknown" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="resumeCannotBecomeNegative" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="dualAndMultiReleasesRemainCandidatesWithoutEnglishGuarantee" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="seasonPackAccepted" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="grantExtendsTimeWithoutErasingItemCounts" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="autoNextFiresOnlyOnceAfterCountdown" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="malformedHashExcluded" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="multiEpisodeFilesRejected" classname="app.torboxtv.core.PoliciesTest" time="0.002"/>
+  <testcase name="staleAutoNextCallbacksCannotStartAfterCancel" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="parentPinIsSaltedAndWrongPinRejected" classname="app.torboxtv.core.PoliciesTest" time="0.32"/>
+  <testcase name="punctuationAndDiacriticsNormalized" classname="app.torboxtv.core.PoliciesTest" time="0.002"/>
+  <testcase name="movieSeasonFileRejected" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="autoNextSkipsFutureAndSpecials" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="legitimateAdultSelectionRemainsAdult" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="corruptedStateWithoutKidProfileIsLockedRecovery" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="movieCountsOnlyAfterTenWatchedMinutes" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="episodeCountsAtFiveMinutesWithLongRuntime" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="malformedPinProofFailsClosed" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="credentialsRejectTruncationAndEmbeddedWhitespace" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="adultProfileHasNoQuotaRestriction" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="alternateEpisodeTagMatches" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="resumeClampsOutOfRangeSavedPosition" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="sourceExplicitDifferentEpisodeNameRejected" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="episodeNumbersCannotPrefixLongerEpisode" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <testcase name="episodeAirYearCannotOverrideSeriesPremiereIdentity" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="explicitEnglishPreferredOverUnknownLanguage" classname="app.torboxtv.core.PoliciesTest" time="0.001"/>
+  <testcase name="exactEpisodeMatches" classname="app.torboxtv.core.PoliciesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

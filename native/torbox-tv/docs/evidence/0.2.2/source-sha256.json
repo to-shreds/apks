@@ -1,0 +1,6 @@
+{
+  "app/src/main/java/app/torboxtv/data/Network.kt": "4e3b1fbdce7d12a1b5cd9771b2ab93751712ab9ed2ba6d940760253756c3e6ac",
+  "app/src/main/java/app/torboxtv/ui/MainActivity.kt": "be0ea9a8b7d41eb03946d4ec83e6665b8228a6ed0d406464108540afdc43f0a0",
+  "app/src/main/java/app/torboxtv/ui/PlayerActivity.kt": "ded9fd5ef3dac19c245a78997d4e2262d5d48106cb15ca38c5e1d65a6d42cd67",
+  "app/src/test/java/app/torboxtv/data/StartupTest.kt": "69fba4a13f675627818c751dd47d03338e314de4f0c010c95c9f053e431542cf"
+}

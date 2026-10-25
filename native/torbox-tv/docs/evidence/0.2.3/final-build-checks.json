@@ -1,0 +1,120 @@
+{
+  "generated_at": "2026-10-11T03:59:16.444462+00:00",
+  "gradle": "8.13",
+  "jdk": "Corretto 17.0.20.12.1",
+  "sdk": {
+    "compile": 36,
+    "platform_revision": 2,
+    "build_tools": "35.0.0",
+    "minimum": 26,
+    "target": 35
+  },
+  "tasks": [
+    "assembleDebug",
+    "assembleDebugAndroidTest",
+    "testDebugUnitTest",
+    "lintDebug"
+  ],
+  "build_success": true,
+  "apk": {
+    "path": "/workspace/scratch/6489353d736f/native-sports-work/torbox-tv/app/build/outputs/apk/debug/app-debug.apk",
+    "bytes": 6993926,
+    "sha256": "341468c84946aed57f08b9ee0a114ef9760f25d5c06fc8ef87bed96feab1e0d5",
+    "version": "0.2.3",
+    "version_code": 6,
+    "package": "app.torboxtv",
+    "signature_v2": true,
+    "certificate_sha256": "a624a6387fdd119fec69897b8386fbdcb4eeb073987c7abc7ac18626b426cedf",
+    "zip_crc": true
+  },
+  "instrumentation_apk": {
+    "path": "/workspace/scratch/6489353d736f/native-sports-work/torbox-tv/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+    "bytes": 449653,
+    "compiled": true,
+    "run_on_device": false
+  },
+  "unit_tests": {
+    "tests": 127,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1
+  },
+  "unit_suites": [
+    {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "app.torboxtv.core.ArtworkUrlsTest"
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "app.torboxtv.core.PlaybackTimingTest"
+    },
+    {
+      "tests": 66,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "app.torboxtv.core.PoliciesTest"
+    },
+    {
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "app.torboxtv.data.BuffStreamsTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "name": "app.torboxtv.data.LiveMetadataTest"
+    },
+    {
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "app.torboxtv.data.NetworkTest"
+    },
+    {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "app.torboxtv.data.SportsTest"
+    },
+    {
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "app.torboxtv.data.StartupTest"
+    }
+  ],
+  "lint": {
+    "Fatal": 0,
+    "Error": 0,
+    "Warning": 31,
+    "Information": 0
+  },
+  "limitations": [
+    "No physical Firestick or Android device instrumentation run.",
+    "No authenticated live TorBox or device startup timing measurement."
+  ],
+  "sports_catalog": {
+    "packaged_matches_source": true,
+    "sha256": "2161721861cf002b62d5e0c81af90c0c4e911ff7bbf6cb1da25a6b317612c2fe",
+    "items": 196,
+    "live": 39,
+    "live_choices": 51,
+    "replay": 157,
+    "dated_replays": 157,
+    "sports": 26
+  }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.data.BuffStreamsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-10T23:12:59.684Z" hostname="c9e0d5fc4ec0" time="0.183">
+  <properties/>
+  <testcase name="nflAndCollegeAndCflAreAmericanFootballWhileNhlRemainsHockey" classname="app.torboxtv.data.BuffStreamsTest" time="0.026"/>
+  <testcase name="nativeResolutionUsesFreshServerChoiceAndPublicHeadersOnly" classname="app.torboxtv.data.BuffStreamsTest" time="0.104"/>
+  <testcase name="listingsUseNamesAndDatesOnlyAndExcludeFinishedGames" classname="app.torboxtv.data.BuffStreamsTest" time="0.009"/>
+  <testcase name="oversizedMetadataIsRejectedInsteadOfRetainingIt" classname="app.torboxtv.data.BuffStreamsTest" time="0.028"/>
+  <testcase name="unsupportedRedirectIsRejectedBeforeContactingItsDestination" classname="app.torboxtv.data.BuffStreamsTest" time="0.003"/>
+  <testcase name="serverSelectionIsBoundedAndDoesNotExecuteProviderCode" classname="app.torboxtv.data.BuffStreamsTest" time="0.001"/>
+  <testcase name="cancelledSelectionCancelsItsPublicMetadataCall" classname="app.torboxtv.data.BuffStreamsTest" time="0.009"/>
+  <testcase name="addressChangesAllowHttpsBuffstreamsRootsAndRejectOtherDestinations" classname="app.torboxtv.data.BuffStreamsTest" time="0.001"/>
+  <testcase name="mediaSegmentsStayInTheTwoVerifiedProviderAccounts" classname="app.torboxtv.data.BuffStreamsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

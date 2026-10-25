@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.data.NetworkTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-10T23:12:59.871Z" hostname="c9e0d5fc4ec0" time="0.081">
+  <properties/>
+  <testcase name="browsingIsIndependentOfTorBoxAndOutageIsNotEmptySearch" classname="app.torboxtv.data.NetworkTest" time="0.031"/>
+  <testcase name="cacheFalseAndMalformedValuesAreNotReady" classname="app.torboxtv.data.NetworkTest" time="0.001"/>
+  <testcase name="verifiesCatalogAndEpisodeIdentity" classname="app.torboxtv.data.NetworkTest" time="0.006"/>
+  <testcase name="catalogRedirectsAreBoundedAndCannotForwardCredentials" classname="app.torboxtv.data.NetworkTest" time="0.006"/>
+  <testcase name="zileanRequiresRowImdbEvidenceAndEpisodeFit" classname="app.torboxtv.data.NetworkTest" time="0.002"/>
+  <testcase name="automaticallyAddsCachedOnlyAndRechecksFilesBeforeLink" classname="app.torboxtv.data.NetworkTest" time="0.016"/>
+  <testcase name="unfilteredFallbackCatalogDoesNotBecomeUnrelatedSearchResults" classname="app.torboxtv.data.NetworkTest" time="0.0"/>
+  <testcase name="validatesMediaHostsAndBoundary" classname="app.torboxtv.data.NetworkTest" time="0.001"/>
+  <testcase name="explicitPreparationOnlyAndInterruptedPostDoesNotRepeat" classname="app.torboxtv.data.NetworkTest" time="0.007"/>
+  <testcase name="responseBytesAreStrictlyBounded" classname="app.torboxtv.data.NetworkTest" time="0.003"/>
+  <testcase name="publicProvidersCannotReceiveKey" classname="app.torboxtv.data.NetworkTest" time="0.001"/>
+  <testcase name="cacheMissNeverAddsOrDownloads" classname="app.torboxtv.data.NetworkTest" time="0.003"/>
+  <testcase name="missingCredentialsHaveNoNetworkSideEffects" classname="app.torboxtv.data.NetworkTest" time="0.002"/>
+  <testcase name="wrongHashStopsSelection" classname="app.torboxtv.data.NetworkTest" time="0.0"/>
+  <testcase name="onlyUnambiguousVerifiedActualFileIdIsSelected" classname="app.torboxtv.data.NetworkTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

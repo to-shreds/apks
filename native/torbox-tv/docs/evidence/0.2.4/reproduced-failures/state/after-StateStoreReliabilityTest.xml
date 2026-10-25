@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.data.StateStoreReliabilityTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-24T02:02:55.054Z" hostname="df7d3555c8b6" time="0.225">
+  <properties/>
+  <testcase name="losingBothSnapshotsRetainsExistingParentalGuard" classname="app.torboxtv.data.StateStoreReliabilityTest" time="0.011"/>
+  <testcase name="untouchedFirstLaunchStillStartsWithUsableAdultProfiles" classname="app.torboxtv.data.StateStoreReliabilityTest" time="0.002"/>
+  <testcase name="corruptBackupWithMissingPrimaryDoesNotReplenishAllowance" classname="app.torboxtv.data.StateStoreReliabilityTest" time="0.001"/>
+  <testcase name="missingCurrentSnapshotRecoversSavedHistoryAndKidGuard" classname="app.torboxtv.data.StateStoreReliabilityTest" time="0.004"/>
+  <testcase name="concurrentStoresPreserveDistinctBookmarksAndWatchlistEntries" classname="app.torboxtv.data.StateStoreReliabilityTest" time="0.205"/>
+  <testcase name="missingUsagePrimaryRecoversDailyAllowanceInsteadOfResettingIt" classname="app.torboxtv.data.StateStoreReliabilityTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

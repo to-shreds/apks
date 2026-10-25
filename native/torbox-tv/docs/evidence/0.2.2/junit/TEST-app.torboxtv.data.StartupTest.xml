@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.torboxtv.data.StartupTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-11T02:31:03.320Z" hostname="c9e0d5fc4ec0" time="0.109">
+  <properties/>
+  <testcase name="completeCacheDoesNotRestartProviders" classname="app.torboxtv.data.StartupTest" time="0.032"/>
+  <testcase name="rejectedEarlyBatchContinuesToLaterProviderAndRanksCumulativeRows" classname="app.torboxtv.data.StartupTest" time="0.004"/>
+  <testcase name="emptyAndUnrelatedRowsCannotTriggerPlaybackBatch" classname="app.torboxtv.data.StartupTest" time="0.004"/>
+  <testcase name="successfulEmptyDiscoveryCanBeCached" classname="app.torboxtv.data.StartupTest" time="0.001"/>
+  <testcase name="partialCacheIsImmediateButCompleteDiscoveryStillRuns" classname="app.torboxtv.data.StartupTest" time="0.004"/>
+  <testcase name="firstAcceptedBatchDoesNotWaitForSlowProviders" classname="app.torboxtv.data.StartupTest" time="0.006"/>
+  <testcase name="allProviderFailuresRemainAnOutageRatherThanCompleteEmptyCache" classname="app.torboxtv.data.StartupTest" time="0.003"/>
+  <testcase name="startupSkipsUnsafeFirstFileAndChecksSecondBeforeReturning" classname="app.torboxtv.data.StartupTest" time="0.008"/>
+  <testcase name="publicMetadataDiscoveryHasNoAccountOrMediaRequests" classname="app.torboxtv.data.StartupTest" time="0.006"/>
+  <testcase name="outageCannotPromotePartialCacheToComplete" classname="app.torboxtv.data.StartupTest" time="0.005"/>
+  <testcase name="verificationCallbackHasItsOwnBudgetBeyondProviderTimeout" classname="app.torboxtv.data.StartupTest" time="0.004"/>
+  <testcase name="attemptBudgetCountsOnlyCachedRowsActuallyExaminedAndStopsBeforeThird" classname="app.torboxtv.data.StartupTest" time="0.008"/>
+  <testcase name="cancellationAfterBatchPreservesPartialWithoutCallingItComplete" classname="app.torboxtv.data.StartupTest" time="0.008"/>
+  <testcase name="olderPartialDiscoveryCannotOverwriteNewCompleteCache" classname="app.torboxtv.data.StartupTest" time="0.007"/>
+  <testcase name="startupReturnsFirstValidatedCachedChoiceWithoutPreparingAlternatives" classname="app.torboxtv.data.StartupTest" time="0.005"/>
+  <testcase name="cacheMissStopsBeforeAccountListOrPreparationAndMarksNoExaminedRows" classname="app.torboxtv.data.StartupTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

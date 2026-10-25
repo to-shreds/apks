@@ -1,0 +1,56 @@
+{
+  "baselineFilename": "TorBox-TV-0.2.2-source.zip",
+  "baselineSha256": "b06eaef57e33d98508a381bf152d2371b2cacb334d8c50c6a99a6c2f509bac83",
+  "unchangedRuntimeFiles": [
+    {
+      "path": "app/src/main/java/app/torboxtv/data/Network.kt",
+      "sha256": "4e3b1fbdce7d12a1b5cd9771b2ab93751712ab9ed2ba6d940760253756c3e6ac",
+      "sameAs022": true
+    },
+    {
+      "path": "app/src/main/java/app/torboxtv/data/StateStore.kt",
+      "sha256": "57e643014818f4fb1aca3c73b7d3aa783e86cf508355b4c2b1af8b9611879d11",
+      "sameAs022": true
+    },
+    {
+      "path": "app/src/main/java/app/torboxtv/data/BuffStreams.kt",
+      "sha256": "e04d4894565cdf2176a623ffb649eb5b72b60525b3bf9ada61593294ae6b0494",
+      "sameAs022": true
+    },
+    {
+      "path": "app/src/main/java/app/torboxtv/ui/PlayerActivity.kt",
+      "sha256": "ded9fd5ef3dac19c245a78997d4e2262d5d48106cb15ca38c5e1d65a6d42cd67",
+      "sameAs022": true
+    },
+    {
+      "path": "app/src/main/java/app/torboxtv/ui/SportsPlayerActivity.kt",
+      "sha256": "e257657a5c4f8ddc7213dcf690399bc01550cb6df51b9e41b025601b622f993b",
+      "sameAs022": true
+    },
+    {
+      "path": "app/src/main/java/app/torboxtv/core/Models.kt",
+      "sha256": "79a3901099de3b9ae2fa18cbccf41384c94320fdbbffcdbbe0440fb20392d4a5",
+      "sameAs022": true
+    },
+    {
+      "path": "app/src/main/java/app/torboxtv/core/Policies.kt",
+      "sha256": "e48b1499d5a3dfb3213ada9efdc448c6deada2ae109f92fa4062aca9307aaefb",
+      "sameAs022": true
+    },
+    {
+      "path": "app/src/main/java/app/torboxtv/core/PlaybackTiming.kt",
+      "sha256": "2657efd2424beb1770dd8483f3569b8e7b175acaf36ccf185d6d0a213786621a",
+      "sameAs022": true
+    },
+    {
+      "path": "app/src/main/java/app/torboxtv/ui/Artwork.kt",
+      "sha256": "4636e49b6090f3becab4a39422668fcabc3601fbe7122f2efc8401e0fc27ee46",
+      "sameAs022": true
+    },
+    {
+      "path": "app/src/main/java/app/torboxtv/core/ArtworkUrls.kt",
+      "sha256": "d57025507cc779dbe03748528349bf6ea39b251a1f31dcfc7ebf4df6e5b42283",
+      "sameAs022": true
+    }
+  ]
+}

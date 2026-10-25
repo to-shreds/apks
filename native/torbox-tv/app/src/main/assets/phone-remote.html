@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>TorBox TV remote</title>
+<style>
+:root{color-scheme:dark;font:16px system-ui,sans-serif;background:#090e19;color:#f4f5fa}*{box-sizing:border-box}body{margin:0;padding:24px 20px max(24px,env(safe-area-inset-bottom));max-width:480px;margin:auto}h1{font-size:25px;margin:0 0 6px}p{color:#a4acc1;font-size:14px;line-height:1.5}.status{min-height:24px;color:#66d1c4}label{display:block;margin:20px 0 7px;font-size:14px}input,select,button{font:inherit;color:inherit;background:#192030;border:1px solid #38445d;border-radius:12px;min-height:54px}input,select{width:100%;padding:12px}button{cursor:pointer;touch-action:manipulation}button:active{background:#27434e;border-color:#66d1c4}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #66d1c4;outline-offset:2px}.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px auto 18px;max-width:300px}.pad button{height:66px}.up{grid-column:2}.left{grid-column:1}.ok{background:#27434e}.down{grid-column:2}.row{display:flex;gap:10px;margin-top:12px}.row button{flex:1}footer{margin-top:28px}footer button{width:100%;color:#a4acc1;min-height:44px}.hint{margin-top:6px}
+</style></head><body>
+<h1>TorBox TV remote</h1><div class="status" id="status" role="status" aria-live="polite">Connecting…</div>
+<label for="scope">Search in</label><select id="scope"><option value="movies">Movies &amp; shows</option><option value="sports">Sports</option></select>
+<label for="query">Type to search on your TV</label><input id="query" type="search" maxlength="160" placeholder="Search…" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"><p class="hint">Results appear on the TV as you type.</p>
+<div class="pad" aria-label="Directional controls"><button class="up" data-key="UP" aria-label="Up">▲</button><button class="left" data-key="LEFT" aria-label="Left">◀</button><button class="ok" data-key="OK">OK</button><button data-key="RIGHT" aria-label="Right">▶</button><button class="down" data-key="DOWN" aria-label="Down">▼</button></div>
+<div class="row"><button data-key="BACK">Back</button><button id="browse">Home</button></div><div class="row"><button data-key="REWIND" aria-label="Rewind">Rewind</button><button data-key="TOGGLE">Play / pause</button><button data-key="FORWARD" aria-label="Forward">Forward</button></div>
+<p>Keep TorBox TV open and both devices on the same Wi-Fi. This page controls the TV; it does not play video.</p><footer><button id="disconnect">Disconnect phone</button></footer>
+<script>
+(()=>{'use strict';const token=location.hash.slice(1),status=document.getElementById('status'),query=document.getElementById('query'),scope=document.getElementById('scope');
+let sequence=0,timer,connected=false,queue=Promise.resolve();const client=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+async function request(command){if(!token)throw Error('pairing');const response=await fetch('/api',{method:'POST',headers:{'Content-Type':'application/json','X-TorBox-Remote':token},body:JSON.stringify(command),cache:'no-store',credentials:'omit'});if(!response.ok)throw Error(response.status===409?'screen':'connection');connected=true;status.textContent='Connected to TorBox TV';}
+function send(command){queue=queue.catch(()=>{}).then(()=>request(command)).catch(error=>{connected=false;status.textContent=error.message==='screen'?'Open browsing on the TV, then try again.':'Disconnected. Open Phone remote on the TV and scan its QR code again.';});return queue;}
+function search(){clearTimeout(timer);const command={action:'search',query:query.value,scope:scope.value,client,sequence:++sequence};timer=setTimeout(()=>send(command),250);}
+document.querySelectorAll('[data-key]').forEach(button=>button.addEventListener('click',()=>send({action:'key',key:button.dataset.key})));
+query.addEventListener('input',search);query.addEventListener('search',search);query.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();search();query.blur();}});scope.addEventListener('change',search);
+document.getElementById('browse').addEventListener('click',()=>send({action:'browse'}));
+document.getElementById('disconnect').addEventListener('click',async()=>{clearTimeout(timer);await send({action:'disconnect'});connected=false;status.textContent='Disconnected. Scan the TV QR code to reconnect.';document.querySelectorAll('button,input,select').forEach(element=>element.disabled=true);});
+if(!/^[0-9a-f]{48}$/.test(token)){status.textContent='Open Phone remote in TorBox TV Settings and scan the QR code.';document.querySelectorAll('button,input,select').forEach(element=>element.disabled=true);}else send({action:'hello'});
+})();
+</script></body></html>
